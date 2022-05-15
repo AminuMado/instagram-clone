@@ -1,3 +1,31 @@
+@font-face {
+  font-family: StarJedi;
+  src: url("./Assets/Fonts/star_jedi/Starjedi.ttf");
+}
+@font-face {
+  font-family: StarJediHollow;
+  src: url("./Assets/Fonts/star_jedi/Starjhol.ttf");
+}
+@font-face {
+  font-family: StarJediOut;
+  src: url("./Assets/Fonts/star_jedi/Starjout.ttf");
+}
+@font-face {
+  font-family: StarJediSe;
+  src: url("./Assets/Fonts/star_jedi/STJEDISE.TTF");
+}
+@font-face {
+  font-family: StarJediBl1;
+  src: url("./Assets/Fonts/star_jedi/Stjldbl1.ttf");
+}
+@font-face {
+  font-family: StarJediBl2;
+  src: url("./Assets/Fonts/star_jedi/Stjldbl2.ttf");
+}
+@font-face {
+  font-family: StarJediMono;
+  src: url("./Assets/Fonts/star_jedi/Strjmono.ttf");
+}
 .App {
   background-image: url("./Assets/Images/wallpaper.jpg");
   background-position: center;
@@ -6,4 +34,9 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: StarJediHollow;
+  color: red;
+  display: flex;
+  justify-items: center;
+  align-items: center;
 }
