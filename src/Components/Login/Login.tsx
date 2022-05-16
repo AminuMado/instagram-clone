@@ -27,7 +27,7 @@ export const Login = () => {
         </div>
       </div>
 
-      <button>Sign in</button>
+      <button onClick={(e) => e.preventDefault()}>Sign in</button>
     </form>
   );
 };
