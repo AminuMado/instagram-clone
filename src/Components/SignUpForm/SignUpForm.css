@@ -1,0 +1,31 @@
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 2px solid wheat;
+  font-size: 30px;
+  font-family: StarJediOut;
+  min-width: 350px;
+}
+div {
+  display: flex;
+  flex-direction: column;
+}
+.signUpForm div input {
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid;
+  color: red;
+  font-size: 20px;
+}
+.signUpForm__avatar {
+  align-items: center;
+  margin-bottom: 10px;
+}
+.avatar_icon {
+  display: flex;
+  width: 100px;
+  border-radius: 25px;
+  border: 2px solid;
+}
