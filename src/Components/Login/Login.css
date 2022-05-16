@@ -3,6 +3,7 @@
   flex-direction: column;
   font-family: StarJedi;
   transition: all 0.3s ease;
+  align-items: center;
 }
 .wrapper_container {
   display: flex;
@@ -36,6 +37,7 @@
   font-family: StarJedi;
   opacity: 0.6;
   cursor: pointer;
+  width: fit-content;
 }
 .loginForm button:hover {
   opacity: 1;
