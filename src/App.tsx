@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { Login } from "./Components/Login/Login";
 import { SignUpForm } from "./Components/SignUpForm/SignUpForm";
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
         <p>Create Account</p>
         <p>Test Account</p>
       </header>
-      <SignUpForm />
+      {/* <SignUpForm />
+      <Login /> */}
     </div>
   );
 }
