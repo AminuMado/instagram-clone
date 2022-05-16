@@ -35,8 +35,24 @@
   background-repeat: no-repeat;
   background-size: cover;
   font-family: StarJediHollow;
-  color: red;
+  color: #d90429;
   display: flex;
   justify-items: center;
   align-items: center;
+  transition: all 0.5s ease;
+}
+.App-header {
+  padding: 10px;
+  transition: all 0.5s ease;
+}
+.App-header p {
+  font-size: 60px;
+  cursor: pointer;
+  width: fit-content;
+}
+.App-header p:hover {
+  font-family: StarJediOut;
+}
+.App-header p:active {
+  transform: scale(0.95);
 }
