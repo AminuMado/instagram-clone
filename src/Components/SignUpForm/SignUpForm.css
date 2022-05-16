@@ -29,3 +29,23 @@ div {
   border-radius: 25px;
   border: 2px solid;
 }
+.signUpForm button {
+  font-family: StarJedi;
+  padding: 10px;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: grey;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: fit-content;
+  justify-self: center;
+  align-self: center;
+}
+.signUpForm button:hover {
+  transform: scale(1.2);
+  color: red;
+}
+.signUpForm button:active {
+  transform: scale(0.95);
+}
