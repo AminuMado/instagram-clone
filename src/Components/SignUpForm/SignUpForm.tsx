@@ -42,7 +42,7 @@ export const SignUpForm = () => {
         {/* <avatar icon that links to the avatar selection modal> */}
         <img className="avatar_icon" src={avatar_Src} alt="avatar" />
       </div>
-      <button>Sign Up</button>
+      <button>Sign up</button>
     </form>
   );
 };
