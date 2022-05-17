@@ -1,10 +1,14 @@
 import "./Overlay.css";
 type OverlayProps = {
-  showOverlay: boolean;
+  active: boolean;
+  handleClick: () => void;
 };
 export const Overlay = (props: OverlayProps) => {
   return (
-    <div className={props.showOverlay ? "overlay active" : "overlay"}></div>
+    <div
+      onClick={props.handleClick}
+      className={props.active ? "overlay active" : "overlay"}
+    ></div>
   );
 };
 export default Overlay;
