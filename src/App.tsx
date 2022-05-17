@@ -1,19 +1,17 @@
 import React from "react";
 import "./App.css";
-import { Login } from "./Components/Login/Login";
-import { SignUpForm } from "./Components/SignUpForm/SignUpForm";
+import { Landing } from "./Components/Landing/Landing";
+import { Home } from "./Components/Home/Home";
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Sign in</p>
-        <p>Create Account</p>
-        <p>Test Account</p>
-      </header>
-      {/* <SignUpForm />
-      <Login /> */}
-    </div>
+    <BrowserRouter basename="/">
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/Home" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
