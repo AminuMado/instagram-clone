@@ -1,8 +1,41 @@
+.signUpForm_container {
+  position: fixed;
+  right: -110%;
+  z-index: 2;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  -moz-box-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  background-color: black;
+  font-size: 3rem;
+  transition: right 0.85s ease-in-out 0s;
+}
+.active {
+  position: fixed;
+  z-index: 2;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  -moz-box-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  background-color: black;
+  font-size: 3rem;
+  transition: right 0.85s ease-in-out 0s;
+  right: 0px;
+}
 .signUpForm {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  border: 2px solid wheat;
   font-size: 30px;
   font-family: StarJediOut;
   min-width: 350px;
@@ -23,11 +56,21 @@ div {
   align-items: center;
   margin-bottom: 10px;
 }
+
 .avatar_icon {
   display: flex;
   width: 100px;
   border-radius: 25px;
   border: 2px solid;
+  cursor: pointer;
+  transition: all 0.6s ease;
+}
+.avatar_icon:hover {
+  transform: scale(1.1);
+  border: 2px solid greenyellow;
+}
+.avatar_icon:active {
+  transform: scale(0.97);
 }
 .signUpForm button {
   font-family: StarJedi;
