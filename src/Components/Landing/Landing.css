@@ -1,0 +1,62 @@
+@font-face {
+  font-family: StarJedi;
+  src: url("../../Assets/Fonts/star_jedi/Starjedi.ttf");
+}
+@font-face {
+  font-family: StarJediHollow;
+  src: url("../../Assets/Fonts/star_jedi/Starjhol.ttf");
+}
+@font-face {
+  font-family: StarJediOut;
+  src: url("../../Assets/Fonts/star_jedi/Starjout.ttf");
+}
+@font-face {
+  font-family: StarJediSe;
+  src: url("../../Assets/Fonts/star_jedi/STJEDISE.TTF");
+}
+@font-face {
+  font-family: StarJediBl1;
+  src: url("../../Assets/Fonts/star_jedi/Stjldbl1.ttf");
+}
+@font-face {
+  font-family: StarJediBl2;
+  src: url("../../Assets/Fonts/star_jedi/Stjldbl2.ttf");
+}
+@font-face {
+  font-family: StarJediMono;
+  src: url("../../Assets/Fonts/star_jedi/Strjmono.ttf");
+}
+.Landing {
+  background-image: url("../../Assets/Images/wallpaper.jpg");
+  background-position: center;
+  background-color: #292828;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: StarJediHollow;
+  color: #d90429;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+.Landing-header {
+  padding: 10px;
+  transition: all 0.5s ease;
+}
+.Landing-header p {
+  font-size: 60px;
+  cursor: pointer;
+  width: fit-content;
+}
+.Landing-header p:hover {
+  font-family: StarJediOut;
+}
+.Landing-header p:active {
+  transform: scale(0.95);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
