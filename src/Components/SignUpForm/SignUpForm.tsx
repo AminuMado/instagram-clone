@@ -4,20 +4,32 @@ import { useState } from "react";
 
 type SignUpFormProps = {
   active: boolean;
+  setShowAvatar: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export const SignUpForm = (props: SignUpFormProps) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
-    <div className={props.active ? "active" : "signUpForm_container"}>
+    <div
+      className={
+        props.active ? "signUpForm_container active" : "signUpForm_container"
+      }
+    >
       <form className="signUpForm">
         <div className="signUpForm__avatar">
           <label htmlFor="avatar">Avatar</label>
           {/* <avatar icon that links to the avatar selection modal> */}
-          <img className="avatar_icon" src={avatar_Src} alt="avatar" />
+          <img
+            onClick={() => {
+              props.setShowAvatar(true);
+            }}
+            className="avatar_icon"
+            src={avatar_Src}
+            alt="avatar"
+          />
         </div>
-        <div>
+        <div className="signUpForm_input_container">
           <label htmlFor="username">UserName</label>
           <input
             onChange={(e) => setUsername(e.target.value)}
@@ -27,7 +39,7 @@ export const SignUpForm = (props: SignUpFormProps) => {
             value={username}
           ></input>
         </div>
-        <div>
+        <div className="signUpForm_input_container">
           <label htmlFor="email"> Email</label>
           <input
             onChange={(e) => setEmail(e.target.value)}
@@ -37,7 +49,7 @@ export const SignUpForm = (props: SignUpFormProps) => {
             value={email}
           ></input>
         </div>
-        <div>
+        <div className="signUpForm_input_container">
           <label htmlFor="password"> Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
