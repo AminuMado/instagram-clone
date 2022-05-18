@@ -1,0 +1,13 @@
+.Home {
+  background-image: url("../../Assets/Images/wallpaper3.jpg");
+  background-position: center;
+  background-color: #292828;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: StarJediHollow;
+  color: #d90429;
+  transition: all 0.5s ease;
+  overflow: scroll;
+}
