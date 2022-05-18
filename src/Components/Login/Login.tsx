@@ -8,7 +8,11 @@ export const Login = (props: LoginProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
-    <div className={props.active ? "active" : "loginForm_container"}>
+    <div
+      className={
+        props.active ? "loginForm_container active" : "loginForm_container"
+      }
+    >
       <form className="loginForm">
         <div className="wrapper_container">
           <div>

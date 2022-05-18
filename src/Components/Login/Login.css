@@ -15,7 +15,7 @@
   font-size: 3rem;
   transition: right 0.85s ease-in-out 0s;
 }
-.active {
+.loginForm_container.active {
   position: fixed;
   z-index: 2;
   top: 0px;
