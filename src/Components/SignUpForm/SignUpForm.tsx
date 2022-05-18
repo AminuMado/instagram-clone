@@ -1,7 +1,8 @@
 import "./SignUpForm.css";
 import avatar_Src from "../../Assets/Images/Avatars/1.png";
-import { Avatar } from "../Avatar/Avatar";
 import { useEffect, useState } from "react";
+import { AvatarPicker } from "../Avatar/AvatarPicker";
+import { Avatar } from "../Avatar/Avatar";
 
 type SignUpFormProps = {
   active: boolean;
@@ -26,16 +27,13 @@ export const SignUpForm = (props: SignUpFormProps) => {
         }
       >
         <form className="signUpForm">
-          <div className="signUpForm__avatar">
+          <div className="signUpForm__avatar_container">
             <label htmlFor="avatar">Avatar</label>
-            {/* <avatar icon that links to the avatar selection modal> */}
-            <img
-              onClick={() => {
+            <Avatar
+              src={avatar}
+              handleClick={() => {
                 setShowAvatarPicker(true);
               }}
-              className="avatar_icon"
-              src={avatar}
-              alt="avatar"
             />
           </div>
           <div className="signUpForm_input_container">
@@ -71,9 +69,9 @@ export const SignUpForm = (props: SignUpFormProps) => {
           <button>Sign up</button>
         </form>
       </div>
-      <Avatar
+      <AvatarPicker
         active={showAvatarPicker}
-        setShowAvatar={setShowAvatarPicker}
+        setShowAvatarPicker={setShowAvatarPicker}
         setAvatar={setAvatar}
       />
     </>
