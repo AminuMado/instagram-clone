@@ -32,6 +32,7 @@ type AvatarIconProps = {
 type AvatarProps = {
   active: boolean;
   setShowAvatar: React.Dispatch<React.SetStateAction<boolean>>;
+  setAvatar: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const Avatar = (props: AvatarProps) => {
@@ -86,6 +87,7 @@ export const Avatar = (props: AvatarProps) => {
         <img
           onClick={() => {
             props.setShowAvatar(false);
+            props.setAvatar(selected);
           }}
           className="back_button"
           src={back}
