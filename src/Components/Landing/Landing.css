@@ -37,7 +37,8 @@
   font-family: StarJediHollow;
   color: #d90429;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   transition: all 0.5s ease;
 }
 .Landing-header {

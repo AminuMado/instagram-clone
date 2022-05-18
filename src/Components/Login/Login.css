@@ -16,20 +16,6 @@
   transition: right 0.85s ease-in-out 0s;
 }
 .loginForm_container.active {
-  position: fixed;
-  z-index: 2;
-  top: 0px;
-  display: flex;
-  flex-direction: column;
-  -moz-box-align: center;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  background-color: black;
-  font-size: 3rem;
-  transition: right 0.85s ease-in-out 0s;
   right: 0px;
 }
 
