@@ -29,8 +29,12 @@ import { useState } from "react";
 type AvatarIconProps = {
   src: string;
 };
+type AvatarProps = {
+  active: boolean;
+  setShowAvatar: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-export const Avatar = () => {
+export const Avatar = (props: AvatarProps) => {
   const [selected, setSelected] = useState(avatar1);
   const AvatarIcon = (props: AvatarIconProps) => {
     return (
@@ -43,36 +47,51 @@ export const Avatar = () => {
     );
   };
   return (
-    <div className="avatar_container">
-      <AvatarIcon src={selected} />
-      <div className="avatars">
-        <AvatarIcon src={avatar1} />
-        <AvatarIcon src={avatar2} />
-        <AvatarIcon src={avatar3} />
-        <AvatarIcon src={avatar4} />
-        <AvatarIcon src={avatar5} />
-        <AvatarIcon src={avatar6} />
-        <AvatarIcon src={avatar7} />
-        <AvatarIcon src={avatar8} />
-        <AvatarIcon src={avatar9} />
-        <AvatarIcon src={avatar10} />
-        <AvatarIcon src={avatar11} />
-        <AvatarIcon src={avatar12} />
-        <AvatarIcon src={avatar13} />
-        <AvatarIcon src={avatar14} />
-        <AvatarIcon src={avatar15} />
-        <AvatarIcon src={avatar16} />
-        <AvatarIcon src={avatar17} />
-        <AvatarIcon src={avatar18} />
-        <AvatarIcon src={avatar19} />
-        <AvatarIcon src={avatar20} />
-        <AvatarIcon src={avatar21} />
-        <AvatarIcon src={avatar22} />
-        <AvatarIcon src={avatar23} />
-        <AvatarIcon src={avatar24} />
-        <AvatarIcon src={avatar25} />
+    <div
+      className={
+        props.active
+          ? "avatar_container_wrapper active"
+          : "avatar_container_wrapper"
+      }
+    >
+      <div className="avatar_container">
+        <AvatarIcon src={selected} />
+        <div className="avatars">
+          <AvatarIcon src={avatar1} />
+          <AvatarIcon src={avatar2} />
+          <AvatarIcon src={avatar3} />
+          <AvatarIcon src={avatar4} />
+          <AvatarIcon src={avatar5} />
+          <AvatarIcon src={avatar6} />
+          <AvatarIcon src={avatar7} />
+          <AvatarIcon src={avatar8} />
+          <AvatarIcon src={avatar9} />
+          <AvatarIcon src={avatar10} />
+          <AvatarIcon src={avatar11} />
+          <AvatarIcon src={avatar12} />
+          <AvatarIcon src={avatar13} />
+          <AvatarIcon src={avatar14} />
+          <AvatarIcon src={avatar15} />
+          <AvatarIcon src={avatar16} />
+          <AvatarIcon src={avatar17} />
+          <AvatarIcon src={avatar18} />
+          <AvatarIcon src={avatar19} />
+          <AvatarIcon src={avatar20} />
+          <AvatarIcon src={avatar21} />
+          <AvatarIcon src={avatar22} />
+          <AvatarIcon src={avatar23} />
+          <AvatarIcon src={avatar24} />
+          <AvatarIcon src={avatar25} />
+        </div>
+        <img
+          onClick={() => {
+            props.setShowAvatar(false);
+          }}
+          className="back_button"
+          src={back}
+          alt="x"
+        />
       </div>
-      <img className="back_button" src={back} alt="x" />
     </div>
   );
 };
