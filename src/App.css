@@ -26,6 +26,7 @@
   font-family: StarJediMono;
   src: url("./Assets/Fonts/star_jedi/Strjmono.ttf");
 }
+
 .App {
   background-image: url("./Assets/Images/wallpaper.jpg");
   background-position: center;
