@@ -11,7 +11,7 @@ export const Post = () => {
       <div className="post__header">
         <div className="post__header_left">
           <Avatar src={avatar} handleClick={() => {}} />
-          <h3>UserName</h3>
+          <h3>The Man Himself</h3>
         </div>
         <div className="post__header_right">
           <svg
