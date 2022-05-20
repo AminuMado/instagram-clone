@@ -6,13 +6,52 @@
   opacity: 0.9;
   border-bottom: 1px solid;
   padding: 14px;
+  position: relative;
 }
 
 .navbar img {
-  width: 70px;
+  width: 60px;
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .navbar img:hover {
   transform: scale(1.1);
+}
+
+.navbar img:active {
+  transform: scale(1);
+}
+.navbar__options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  position: fixed;
+  top: -110%;
+  right: 5px;
+  background-color: silver;
+  font-size: 30px;
+  height: 200px;
+  border-radius: 25px;
+  transition: all 0.4s ease-in-out;
+}
+.navbar__options span {
+  transition: all 0.3s ease-in-out;
+}
+.navbar__options.active {
+  top: 5px;
+  right: 5px;
+}
+.navbar__options span:hover {
+  color: rgb(59, 130, 246);
+  cursor: pointer;
+}
+.navbar__options span:active {
+  transform: scale(0.9);
+}
+.navbar__options .back_icon {
+  top: 0;
+  width: 40px;
 }
