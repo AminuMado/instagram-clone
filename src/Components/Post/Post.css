@@ -30,6 +30,7 @@
   font-weight: normal;
   font-size: 18px;
   color: black;
+  padding: 5px 5px 5px 10px;
 }
 .post__text strong {
   color: black;
@@ -38,10 +39,17 @@
 }
 .post__icons {
   display: flex;
-  padding: 5px;
+  padding: 6px;
   gap: 5px;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
+}
+.num_of_likes {
+  font-size: 15px;
+  position: absolute;
+  bottom: -18px;
+  left: 10px;
 }
 .comment_icon,
 .like_icon,
@@ -71,7 +79,7 @@
   flex: 1;
   background-color: transparent;
   border: none;
-  padding: 5px;
+  padding: 5px 5px 5px 10px;
   font-size: 20px;
 }
 .post__comment_input:focus {
