@@ -1,12 +1,29 @@
 import "./Navbar.css";
-import settings1_Src from "../../Assets/Images/settings1.png";
-import settings2_Src from "../../Assets/Images/settings2.png";
+import settings_Src from "../../Assets/Images/settings.png";
+import back_Src from "../../Assets/Images/back1.png";
+import { useState } from "react";
 export const Navbar = () => {
+  const [showOptions, setShowOptions] = useState(false);
   return (
-    <div className="navbar">
+    <nav className="navbar">
       <h1>Star Wars World</h1>
-      {/* <img src={settings1_Src}></img> */}
-      <img src={settings2_Src}></img>
-    </div>
+      <img
+        onClick={() => setShowOptions(true)}
+        src={settings_Src}
+        alt="menu_icon"
+      ></img>
+      <nav
+        className={showOptions ? "navbar__options active" : "navbar__options"}
+      >
+        <span>Profile</span>
+        <span>Sign out</span>
+        <img
+          onClick={() => setShowOptions(false)}
+          className="back_icon"
+          src={back_Src}
+          alt="back_icon"
+        ></img>
+      </nav>
+    </nav>
   );
 };
