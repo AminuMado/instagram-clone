@@ -91,7 +91,7 @@ export const AvatarPicker = (props: AvatarPickerProps) => {
             props.setShowAvatarPicker(false);
             props.setAvatar(selected);
           }}
-          className="back_button"
+          className="back_icon"
           src={back}
           alt="x"
         />

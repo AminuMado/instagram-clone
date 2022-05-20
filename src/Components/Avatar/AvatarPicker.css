@@ -91,7 +91,7 @@
 .avatar_picker_container > button:active {
   transform: scale(0.95);
 }
-img.back_button {
+img.back_icon {
   position: absolute;
   width: 30px;
   opacity: 0.5;
@@ -100,11 +100,11 @@ img.back_button {
   transition: all 0.3s ease;
 }
 
-img.back_button:hover {
+img.back_icon:hover {
   transform: scale(1.2);
   opacity: 1;
   cursor: pointer;
 }
-img.back_button:active {
+img.back_icon:active {
   transform: scale(0.95);
 }
