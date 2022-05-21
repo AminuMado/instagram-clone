@@ -1,3 +1,26 @@
+:root {
+  --primary-color: #302ae6;
+  --primary-color1: #302ae6;
+  --secondary-color: #536390;
+  --secondary-color1: #536390;
+  --font-color: #424242;
+  --font-color1: #424242;
+  --font-color2: #424242;
+  --bg-color: #fff;
+  --bg-color1: #fff;
+  --heading-color: #292922;
+  --heading-color1: #292922;
+  --background-img: url("./Assets/Images/wallpaper3.jpg");
+}
+.dark {
+  --primary-color: #9a97f3;
+  --secondary-color: #818cab;
+  --font-color: #e1e1ff;
+  --bg-color: #161625;
+  --heading-color: #818cab;
+  --background-img: url("./Assets/Images/wallpaper5.jpg");
+}
+
 * {
   margin: 0;
   padding: 0;
