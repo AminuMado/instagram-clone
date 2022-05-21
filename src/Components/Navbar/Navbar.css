@@ -6,7 +6,8 @@
   opacity: 0.9;
   border-bottom: 1px solid;
   padding: 14px;
-  position: relative;
+  position: sticky;
+  top: 0;
 }
 
 .navbar img {
@@ -56,5 +57,6 @@
   width: 40px;
 }
 .dark_mode_switch {
-  color: red;
+  position: absolute;
+  bottom: 10px;
 }
