@@ -1,5 +1,5 @@
 .Home {
-  background-image: url("../../Assets/Images/wallpaper3.jpg");
+  background-image: var(--background-img);
   background-position: center;
   background-color: #292828;
   height: 100vh;
