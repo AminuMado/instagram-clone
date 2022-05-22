@@ -1,6 +1,7 @@
 import { Avatar } from "../Avatar/Avatar";
 import { Navbar } from "../Navbar/Navbar";
 import avatar from "../../Assets/Images/Avatars/7.png";
+import img_Src from "../../Assets/Images/wallpaper5.jpg";
 
 import "./Profile.css";
 
@@ -37,7 +38,9 @@ export const Profile = () => {
           <h3>Saved</h3>
         </div>
         <div className="profile__posts">
-          <div className="profile__posts_postCard"></div>
+          <div className="profile__posts_postCard">
+            <img src={img_Src} alt="post"></img>
+          </div>
         </div>
       </div>
     </>
