@@ -1,0 +1,84 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 100px 50px;
+  font-family: StarJedi;
+  flex-wrap: wrap;
+}
+
+.profile__userInfo_container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.profile__userInfo_container .avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  border: 2px transparent solid;
+  cursor: default;
+}
+.profile__userInfo_container .avatar:hover,
+.profile__userInfo_container .avatar:active {
+  transform: none;
+}
+.profile__userInfo_top {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.profile__userInfo_top button {
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  border: 2px solid rgb(19, 18, 18);
+  letter-spacing: 2px;
+  text-align: center;
+  transition: all 0.35s;
+  background: none;
+  font-family: StarJediSe;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+}
+.profile__userInfo_top button:hover {
+  color: #fff;
+  cursor: pointer;
+  background: black;
+}
+
+.profile__userInfo_bottom {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.profile__tabs {
+  align-items: center;
+  border-top: 1px solid #ccc;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+.profile__tabs h3 {
+  border-top: 2px solid #000;
+  font-size: 0.8rem;
+  padding-top: 0.8rem;
+}
+.profile__userInfo_bottom div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
