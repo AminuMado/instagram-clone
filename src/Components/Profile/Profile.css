@@ -88,3 +88,15 @@
   gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
 }
+.profile__posts_postCard {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.profile__posts_postCard img {
+  height: 100%;
+  width: 100%;
+  min-width: 240px;
+  object-fit: contain;
+}
