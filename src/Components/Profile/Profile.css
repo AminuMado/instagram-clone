@@ -100,3 +100,22 @@
   min-width: 240px;
   object-fit: contain;
 }
+.profile__posts_postCard img:hover {
+  opacity: 0.4;
+}
+.postCard_info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.postCard_info_likes,
+.postCard_info_comments {
+  display: flex;
+  align-items: center;
+  font-size: 23px;
+  gap: 4px;
+  justify-content: center;
+}
