@@ -3,6 +3,7 @@ import img_Src from "../../Assets/Images/wallpaper5.jpg";
 import { Avatar } from "../Avatar/Avatar";
 import avatar from "../../Assets/Images/Avatars/7.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 export const Post = () => {
   const [comment, setComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
@@ -10,7 +11,9 @@ export const Post = () => {
     <div className="post">
       <div className="post__header">
         <div className="post__header_left">
-          <Avatar src={avatar} handleClick={() => {}} />
+          <Link to="/Profile">
+            <Avatar src={avatar} handleClick={() => {}} />
+          </Link>
           <h3>The Man Himself</h3>
         </div>
         <div className="post__header_right">
@@ -29,7 +32,10 @@ export const Post = () => {
           </svg>
         </div>
       </div>
-      <img className="post__image" src={img_Src} alt="post" />
+      <Link to={`/Post/1`}>
+        {/* Need to fix the linking to use an id properly*/}
+        <img className="post__image" src={img_Src} alt="post" />
+      </Link>
       <div className="post__icons">
         <svg
           xmlns="http://www.w3.org/2000/svg"
