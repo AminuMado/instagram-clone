@@ -10,6 +10,12 @@
 
 .postModal__container {
   display: flex;
+  height: 90%;
+  background: #d7d6d4;
+}
+.postModal__details_container {
+  min-width: 550px;
+  width: 800px;
 }
 .postModal__image_container {
   max-width: 800px;
