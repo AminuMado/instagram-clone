@@ -75,14 +75,14 @@ export const PostModal = () => {
           <form className="postModal__addComment">
             <input
               aria-label="Add a comment"
-              className="post__comment_input"
+              className="postModal__addComment_input"
               type="text"
               name="add-comment"
               placeholder="Add a comment"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
-            <button className="postModal__comment_button" type="button">
+            <button className="postModal__addComment_button" type="button">
               Post
             </button>
           </form>

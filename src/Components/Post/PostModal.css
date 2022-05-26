@@ -1,6 +1,6 @@
 .postModal {
   font-family: StarJedi;
-  padding: 50px;
+  padding: 10px;
   background: rgba(59, 130, 246, 0.5);
   height: 100vh;
   display: grid;
@@ -16,17 +16,24 @@
 .postModal__details_container {
   min-width: 550px;
   width: 800px;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 6px;
+  overflow: scroll;
+  flex: 1;
 }
 .postModal__image_container {
   max-width: 800px;
-  max-height: 800px;
-  height: 800px;
+  max-height: 100%;
 }
 .postModal__image {
   width: 100%;
   object-fit: cover;
   height: 100%;
 }
+
 .postModal__header {
   display: flex;
   align-items: center;
@@ -44,7 +51,14 @@
   align-items: center;
   padding: 5px;
 }
+.postModal__comments {
+  flex: 1;
+  overflow: scroll;
 
+  max-height: 620px;
+  padding: 5px;
+  margin: 10px 5px;
+}
 .postModal__comment {
   font-weight: normal;
   font-size: 18px;
@@ -56,9 +70,11 @@
   font-size: 20px;
   margin-right: 5px;
 }
+
 .postModal__icons {
   display: flex;
   padding: 6px;
+  margin: 6px;
   gap: 5px;
   align-items: center;
   justify-content: flex-start;
@@ -67,8 +83,8 @@
 .num_of_likes {
   font-size: 15px;
   position: absolute;
-  bottom: -18px;
-  left: 10px;
+  bottom: -25px;
+  left: 15px;
 }
 .comment_icon,
 .like_icon,
@@ -120,7 +136,6 @@
 }
 .postModal__addComment_button:hover {
   opacity: 1;
-  transform: scale(1.1);
 }
 .postModal__addComment_button:active {
   transform: scale(0.96);
