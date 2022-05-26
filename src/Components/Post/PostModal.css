@@ -88,23 +88,23 @@
   transform: scale(1);
 }
 
-.postModal__comment {
+.postModal__addComment {
   display: flex;
   align-items: center;
   gap: 4px;
   border-top: 1px solid;
 }
-.postModal__comment_input {
+.postModal__addComment_input {
   flex: 1;
   background-color: transparent;
   border: none;
   padding: 5px 5px 5px 10px;
   font-size: 19px;
 }
-.postModal__comment_input:focus {
+.postModal__addComment_input:focus {
   outline: none;
 }
-.postModal__comment_button {
+.postModal__addComment_button {
   background: none;
   color: black;
   font-size: 1.1rem;
@@ -118,11 +118,11 @@
   padding-left: 3px;
   padding-right: 3px;
 }
-.postModal__comment_button:hover {
+.postModal__addComment_button:hover {
   opacity: 1;
   transform: scale(1.1);
 }
-.postModal__comment_button:active {
+.postModal__addComment_button:active {
   transform: scale(0.96);
   border: none;
 }

@@ -71,7 +71,7 @@ export const PostModal = () => {
             <strong>The Man Himself:</strong>First Post
           </h4>
 
-          <form className="postModal__comment">
+          <form className="postModal__addComment">
             <input
               aria-label="Add a comment"
               className="post__comment_input"
