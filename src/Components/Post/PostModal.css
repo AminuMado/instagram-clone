@@ -45,13 +45,13 @@
   padding: 5px;
 }
 
-.postModal__text {
+.postModal__comment {
   font-weight: normal;
   font-size: 18px;
   color: black;
   padding: 5px 5px 5px 10px;
 }
-.postModal__text strong {
+.postModal__comment strong {
   color: black;
   font-size: 20px;
   margin-right: 5px;

@@ -66,10 +66,11 @@ export const PostModal = () => {
             </svg>
             <span className="num_of_likes">1 like</span>
           </div>
-
-          <h4 className="postModal__text">
-            <strong>The Man Himself:</strong>First Post
-          </h4>
+          <div className="postModal__comments">
+            <h4 className="postModal__comment">
+              <strong>The Man Himself:</strong>First Post
+            </h4>
+          </div>
 
           <form className="postModal__addComment">
             <input
