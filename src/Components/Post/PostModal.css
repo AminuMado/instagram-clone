@@ -80,7 +80,7 @@
   justify-content: flex-start;
   position: relative;
 }
-.num_of_likes {
+.postModal .num_of_likes {
   font-size: 15px;
   position: absolute;
   bottom: -25px;
