@@ -141,3 +141,6 @@
   transform: scale(0.96);
   border: none;
 }
+.postModal .back_icon {
+  top: 5px;
+}
