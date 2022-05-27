@@ -1,11 +1,16 @@
 import "./PostModal.css";
 import img_Src from "../../Assets/Images/wallpaper5.jpg";
+import back from "../../Assets/Images/back.png";
+import back_Src from "../../Assets/Images/back1.png";
+import { useNavigate } from "react-router-dom";
 import { Avatar } from "../Avatar/Avatar";
 import avatar from "../../Assets/Images/Avatars/7.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 export const PostModal = () => {
   const [comment, setComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
+  const navigate = useNavigate();
   return (
     <div className="postModal">
       <div className="postModal__container">
@@ -88,6 +93,13 @@ export const PostModal = () => {
           </form>
         </div>
       </div>
+
+      <img
+        onClick={() => navigate(-1)}
+        className="back_icon"
+        src={back_Src}
+        alt="back_icon"
+      />
     </div>
   );
 };
