@@ -1,0 +1,33 @@
+.imageupload {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 10px auto;
+  position: fixed;
+  bottom: 0;
+  background-color: silver;
+  border-top: 1px solid lightblue;
+  padding: 20px;
+  gap: 10px;
+  font-family: StarJedi;
+}
+.imageupload input {
+  font-family: StarJedi;
+}
+.imageupload button {
+  font-family: StarJediBl1;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  align-self: center;
+  justify-self: center;
+  opacity: 0.6;
+}
+.imageupload button:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+.imageupload button:active {
+  transform: scale(1);
+}
