@@ -1,21 +1,30 @@
 import "./Navbar.css";
 import settings_Src from "../../Assets/Images/settings.png";
 import back_Src from "../../Assets/Images/back1.png";
+import upload_Src from "../../Assets/Images/newpost.png";
 import { useState } from "react";
 import Switcher from "../../Switcher";
 import { Link } from "react-router-dom";
 export const Navbar = () => {
   const [showOptions, setShowOptions] = useState(false);
+  const [showNewPost, setShowNewPost] = useState(false);
   return (
     <nav className="navbar">
       <Link to="/Home">
         <h1>Star Wars World</h1>
       </Link>
-      <img
-        onClick={() => setShowOptions(true)}
-        src={settings_Src}
-        alt="menu_icon"
-      ></img>
+      <div>
+        <img
+          onClick={() => setShowNewPost(true)}
+          src={upload_Src}
+          alt="newpost_icon"
+        />
+        <img
+          onClick={() => setShowOptions(true)}
+          src={settings_Src}
+          alt="menu_icon"
+        />
+      </div>
       <nav
         className={showOptions ? "navbar__options active" : "navbar__options"}
       >
