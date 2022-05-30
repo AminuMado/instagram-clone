@@ -1,7 +1,10 @@
 import { useState } from "react";
 import "./NewPost.css";
 
-export const ImageUpload = () => {
+type ImageUploadProps = {
+  active: boolean;
+};
+export const ImageUpload = (props: ImageUploadProps) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
@@ -52,7 +55,7 @@ export const ImageUpload = () => {
     // );
   };
   return (
-    <div className="imageupload">
+    <div className={props.active ? "imageupload active" : "imageupload"}>
       <progress className="imageupload__progress" value={progress} max="100" />
       <input
         type={"text"}
