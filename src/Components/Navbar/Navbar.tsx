@@ -5,6 +5,7 @@ import upload_Src from "../../Assets/Images/newpost.png";
 import { useState } from "react";
 import Switcher from "../../Switcher";
 import { Link } from "react-router-dom";
+import { ImageUpload } from "../Post/NewPost";
 export const Navbar = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [showNewPost, setShowNewPost] = useState(false);
@@ -15,7 +16,7 @@ export const Navbar = () => {
       </Link>
       <div>
         <img
-          onClick={() => setShowNewPost(true)}
+          onClick={() => setShowNewPost(!showNewPost)}
           src={upload_Src}
           alt="newpost_icon"
         />
@@ -25,6 +26,9 @@ export const Navbar = () => {
           alt="menu_icon"
         />
       </div>
+
+      <ImageUpload active={showNewPost} />
+
       <nav
         className={showOptions ? "navbar__options active" : "navbar__options"}
       >
