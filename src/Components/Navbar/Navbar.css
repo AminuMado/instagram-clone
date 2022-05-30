@@ -8,6 +8,7 @@
   padding: 14px;
   position: sticky;
   top: 0;
+  font-family: StarJedi;
 }
 
 .navbar img {
@@ -36,7 +37,7 @@
   font-size: 30px;
   height: 200px;
   border-radius: 25px;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 .navbar__options span {
   transition: all 0.3s ease-in-out;
