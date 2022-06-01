@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-
+import { ThemeContext } from "./Context/ThemeContext";
 const Switcher = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, toggle } = useContext(ThemeContext);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -11,7 +11,7 @@ const Switcher = () => {
 
   return (
     <DarkModeSwitch
-      onChange={() => setIsDarkMode(!isDarkMode)}
+      onChange={toggle}
       checked={isDarkMode}
       size={50}
       className="dark_mode_switch"
