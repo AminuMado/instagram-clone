@@ -6,9 +6,11 @@ import { useState } from "react";
 import Switcher from "../../Switcher";
 import { Link } from "react-router-dom";
 import { ImageUpload } from "../Post/NewPost";
+
 export const Navbar = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [showNewPost, setShowNewPost] = useState(false);
+
   return (
     <nav className="navbar">
       <Link to="/Home">
