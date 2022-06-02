@@ -8,9 +8,11 @@ import { Link } from "react-router-dom";
 import { collection, onSnapshot } from "firebase/firestore";
 
 type post = {
+  id: string;
   caption: string;
   imageURL: string;
   username: string;
+  avatar: string;
 };
 
 export const Post = () => {
@@ -18,36 +20,27 @@ export const Post = () => {
   const [comment, setComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
   useEffect(() => {
-    // //collection ref
+    //collection ref
     const colRef = collection(db, "posts");
     let posts: post[] = [];
     const unsub = onSnapshot(colRef, (snapshot) => {
-      posts = snapshot.docs.map((doc) => doc.data() as post);
+      posts = snapshot.docs.map((doc) => ({
+        ...(doc.data() as post),
+        id: doc.id,
+      }));
       setPosts(posts);
     });
-    // unsub();
-    // const getPosts = async () => {
-    //   let posts: post[] = [];
-    //   const firestoreData = await getDocs(colRef);
-    //   firestoreData.forEach((doc) => {
-    //     let post = doc.data() as post;
-    //     posts.push(post);
-    //   });
-    //   //update our posts local state
-    //   setPosts(posts);
-    // };
-    // getPosts();
   }, []);
   console.log(posts);
-  const Posts = posts.map((post: post, index) => {
+  const Posts = posts.map((post: post) => {
     return (
-      <div className="post" key={index}>
+      <div className="post" key={post.id}>
         <div className="post__header">
           <div className="post__header_left">
             <Link to="/Profile">
-              <Avatar src={avatar} handleClick={() => {}} />
+              <Avatar src={post.avatar} handleClick={() => {}} />
             </Link>
-            <h3>The Man Himself</h3>
+            <h3>{post.username}</h3>
           </div>
           <div className="post__header_right">
             <svg
@@ -65,9 +58,8 @@ export const Post = () => {
             </svg>
           </div>
         </div>
-        <Link to={`/Post/1`}>
-          {/* Need to fix the linking to use an id properly*/}
-          <img className="post__image" src={img_Src} alt="post" />
+        <Link to={`/Post/${post.id}`}>
+          <img className="post__image" src={post.imageURL} alt="post" />
         </Link>
         <div className="post__icons">
           <svg
