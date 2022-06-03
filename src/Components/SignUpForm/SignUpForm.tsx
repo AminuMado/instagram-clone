@@ -23,18 +23,11 @@ export const SignUpForm = (props: SignUpFormProps) => {
   const signUp = () => {
     const auth = getAuth();
     console.log(email, password);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        // const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
-        // ..
-      });
+    createUserWithEmailAndPassword(auth, email, password).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
   };
   useEffect(() => {
     if (props.active === false) {
