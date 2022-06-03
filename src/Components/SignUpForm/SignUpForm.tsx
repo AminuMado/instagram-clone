@@ -3,7 +3,12 @@ import avatar_Src from "../../Assets/Images/Avatars/1.png";
 import { useEffect, useState } from "react";
 import { AvatarPicker } from "../Avatar/AvatarPicker";
 import { Avatar } from "../Avatar/Avatar";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  updateProfile,
+} from "firebase/auth";
 
 type SignUpFormProps = {
   active: boolean;
@@ -14,7 +19,7 @@ export const SignUpForm = (props: SignUpFormProps) => {
   const [password, setPassword] = useState<string>("");
   const [avatar, setAvatar] = useState<string>(avatar_Src);
   const [showAvatarPicker, setShowAvatarPicker] = useState<boolean>(false);
-
+  const [user, setUser] = useState<{} | null>(null);
   const signUp = () => {
     const auth = getAuth();
     console.log(email, password);
@@ -36,6 +41,33 @@ export const SignUpForm = (props: SignUpFormProps) => {
       setShowAvatarPicker(false);
     }
   }, [props.active]);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        console.log(authUser);
+        const uid = authUser.uid;
+        setUser(authUser); // authUser will always be a user in this scope
+        // ...
+        if (authUser.displayName) {
+          // dont update username
+        } else {
+          return updateProfile(authUser, { displayName: username });
+        }
+      } else {
+        //user has logged out
+        setUser(authUser); // authuser in this case will always be null in this scope
+      }
+    });
+
+    return () => {
+      //perform some cleanup action, this is used to remove the listener onAuthStateChanged when this use effect runs again, as it will run again once our user or username state changes
+      unsubscribe();
+    };
+  }, [user, username]);
   return (
     <>
       <div
