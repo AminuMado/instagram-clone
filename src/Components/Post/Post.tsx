@@ -1,7 +1,5 @@
 import "./Post.css";
-import img_Src from "../../Assets/Images/wallpaper5.jpg";
 import { Avatar } from "../Avatar/Avatar";
-import avatar from "../../Assets/Images/Avatars/7.png";
 import { db } from "../../Utils/firebase";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -30,8 +28,11 @@ export const Post = () => {
       }));
       setPosts(posts);
     });
+    return () => {
+      unsub();
+    };
   }, []);
-  console.log(posts);
+
   const Posts = posts.map((post: post) => {
     return (
       <div className="post" key={post.id}>
@@ -116,5 +117,5 @@ export const Post = () => {
       </div>
     );
   });
-  return <>{Posts}</>;
+  return <div className="posts">{Posts}</div>;
 };
