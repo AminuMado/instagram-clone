@@ -3,17 +3,34 @@ import avatar_Src from "../../Assets/Images/Avatars/1.png";
 import { useEffect, useState } from "react";
 import { AvatarPicker } from "../Avatar/AvatarPicker";
 import { Avatar } from "../Avatar/Avatar";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 type SignUpFormProps = {
   active: boolean;
 };
 export const SignUpForm = (props: SignUpFormProps) => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState(avatar_Src);
-  const [showAvatarPicker, setShowAvatarPicker] = useState(false);
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [avatar, setAvatar] = useState<string>(avatar_Src);
+  const [showAvatarPicker, setShowAvatarPicker] = useState<boolean>(false);
 
+  const signUp = () => {
+    const auth = getAuth();
+    console.log(email, password);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        // ..
+      });
+  };
   useEffect(() => {
     if (props.active === false) {
       setShowAvatarPicker(false);
@@ -26,7 +43,13 @@ export const SignUpForm = (props: SignUpFormProps) => {
           props.active ? "signUpForm_container active" : "signUpForm_container"
         }
       >
-        <form className="signUpForm">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            signUp();
+          }}
+          className="signUpForm"
+        >
           <div className="signUpForm__avatar_container">
             <label htmlFor="avatar">Avatar</label>
             <Avatar
