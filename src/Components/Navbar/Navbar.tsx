@@ -6,11 +6,23 @@ import { useState } from "react";
 import Switcher from "../../Switcher";
 import { Link } from "react-router-dom";
 import { ImageUpload } from "../Post/NewPost";
-
+import { getAuth, signOut } from "firebase/auth";
 export const Navbar = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [showNewPost, setShowNewPost] = useState(false);
 
+  const handleSignOut = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        // setUser to null
+      })
+      .catch((error) => {
+        // An error happened.
+        alert(error.message);
+      });
+  };
   return (
     <nav className="navbar">
       <Link to="/Home">
@@ -37,7 +49,7 @@ export const Navbar = () => {
         <Link to="/Profile">
           <span>Profile</span>
         </Link>
-        <Link to="/">
+        <Link to="/" onClick={handleSignOut}>
           <span>Sign out</span>
         </Link>
         <img
