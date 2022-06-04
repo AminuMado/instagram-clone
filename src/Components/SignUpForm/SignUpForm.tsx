@@ -1,6 +1,6 @@
 import "./SignUpForm.css";
 import avatar_Src from "../../Assets/Images/Avatars/1.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AvatarPicker } from "../Avatar/AvatarPicker";
 import { Avatar } from "../Avatar/Avatar";
 import {
@@ -9,6 +9,7 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
+import { UserContext } from "../../Context/UserContext";
 
 type SignUpFormProps = {
   active: boolean;
@@ -19,12 +20,10 @@ export const SignUpForm = (props: SignUpFormProps) => {
   const [password, setPassword] = useState<string>("");
   const [avatar, setAvatar] = useState<string>(avatar_Src);
   const [showAvatarPicker, setShowAvatarPicker] = useState<boolean>(false);
-  const [user, setUser] = useState<{} | null>(null);
+  const { user, setUser } = useContext(UserContext);
   const signUp = () => {
     const auth = getAuth();
-    console.log(email, password);
     createUserWithEmailAndPassword(auth, email, password).catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
       alert(errorMessage);
     });
@@ -41,8 +40,7 @@ export const SignUpForm = (props: SignUpFormProps) => {
       if (authUser) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        console.log(authUser);
-        const uid = authUser.uid;
+        // const uid = authUser.uid;
         setUser(authUser); // authUser will always be a user in this scope
         // ...
         if (authUser.displayName) {
@@ -60,7 +58,7 @@ export const SignUpForm = (props: SignUpFormProps) => {
       //perform some cleanup action, this is used to remove the listener onAuthStateChanged when this use effect runs again, as it will run again once our user or username state changes
       unsubscribe();
     };
-  }, [user, username]);
+  }, [user, username, setUser]);
   return (
     <>
       <div
