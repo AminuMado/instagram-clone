@@ -2,7 +2,12 @@ import React, { createContext, useState } from "react";
 type UserContextProviderProps = {
   children: React.ReactNode;
 };
-export const UserContext = createContext({});
+type UserContext = {
+  user: {} | null;
+  setUser: React.Dispatch<React.SetStateAction<{} | null>>;
+};
+
+export const UserContext = createContext({} as UserContext);
 
 export const UserContextProvider = (props: UserContextProviderProps) => {
   const [user, setUser] = useState<{} | null>(null);
