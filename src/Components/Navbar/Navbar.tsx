@@ -2,14 +2,16 @@ import "./Navbar.css";
 import settings_Src from "../../Assets/Images/settings.png";
 import back_Src from "../../Assets/Images/back1.png";
 import upload_Src from "../../Assets/Images/newpost.png";
-import { useState } from "react";
-import Switcher from "../../Switcher";
+import { useContext, useState } from "react";
+import Switcher from "../../Utils/Switcher";
 import { Link } from "react-router-dom";
 import { ImageUpload } from "../Post/NewPost";
 import { getAuth, signOut } from "firebase/auth";
+import { UserContext } from "../../Context/UserContext";
 export const Navbar = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [showNewPost, setShowNewPost] = useState(false);
+  const { setUser } = useContext(UserContext);
 
   const handleSignOut = () => {
     const auth = getAuth();
@@ -17,6 +19,7 @@ export const Navbar = () => {
       .then(() => {
         // Sign-out successful.
         // setUser to null
+        setUser(null);
       })
       .catch((error) => {
         // An error happened.
