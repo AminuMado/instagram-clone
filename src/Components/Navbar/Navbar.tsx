@@ -11,7 +11,7 @@ import { UserContext } from "../../Context/UserContext";
 export const Navbar = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [showNewPost, setShowNewPost] = useState(false);
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const handleSignOut = () => {
     const auth = getAuth();
@@ -19,7 +19,10 @@ export const Navbar = () => {
       .then(() => {
         // Sign-out successful.
         // setUser to null
+        // remove user from local storage
+        localStorage.removeItem("currentUser");
         setUser(null);
+        console.log(user);
       })
       .catch((error) => {
         // An error happened.
