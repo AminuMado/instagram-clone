@@ -6,7 +6,8 @@ import { useContext, useState } from "react";
 import Switcher from "../../Utils/Switcher";
 import { Link } from "react-router-dom";
 import { ImageUpload } from "../Post/NewPost";
-import { getAuth, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
+import { auth } from "../../Utils/firebase";
 import { UserContext } from "../../Context/UserContext";
 export const Navbar = () => {
   const [showOptions, setShowOptions] = useState(false);
@@ -14,7 +15,6 @@ export const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
 
   const handleSignOut = () => {
-    const auth = getAuth();
     signOut(auth)
       .then(() => {
         // Sign-out successful.
@@ -23,6 +23,9 @@ export const Navbar = () => {
         localStorage.removeItem("currentUser");
         setUser(null);
         console.log(user);
+      })
+      .then(() => {
+        console.log("logged out");
       })
       .catch((error) => {
         // An error happened.

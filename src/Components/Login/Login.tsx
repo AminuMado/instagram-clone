@@ -1,8 +1,8 @@
 import "./Login.css";
 import { useContext, useState } from "react";
 import { UserContext } from "../../Context/UserContext";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../Utils/firebase";
 type LoginProps = {
   active: boolean;
 };
@@ -12,7 +12,6 @@ export const Login = (props: LoginProps) => {
 
   const { user, setUser } = useContext(UserContext);
   const login = () => {
-    const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
