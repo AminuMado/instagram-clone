@@ -4,11 +4,11 @@ import { useContext, useEffect, useState } from "react";
 import { AvatarPicker } from "../Avatar/AvatarPicker";
 import { Avatar } from "../Avatar/Avatar";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
+import { auth } from "../../Utils/firebase";
 import { UserContext } from "../../Context/UserContext";
 
 type SignUpFormProps = {
@@ -22,11 +22,17 @@ export const SignUpForm = (props: SignUpFormProps) => {
   const [showAvatarPicker, setShowAvatarPicker] = useState<boolean>(false);
   const { user, setUser } = useContext(UserContext);
   const signUp = () => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password).catch((error) => {
-      const errorMessage = error.message;
-      alert(errorMessage);
-    });
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((resp) => {
+        // if resp is the user we can update the display name here and remove it from the onauthstatechanged listner below
+        // also update the selected avatar
+        console.log(resp);
+        // updateProfile(authUser, { displayName: username });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
   };
   useEffect(() => {
     if (props.active === false) {
@@ -35,7 +41,6 @@ export const SignUpForm = (props: SignUpFormProps) => {
   }, [props.active]);
 
   useEffect(() => {
-    const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
         // User is signed in, see docs for a list of available properties
@@ -43,7 +48,6 @@ export const SignUpForm = (props: SignUpFormProps) => {
         // const uid = authUser.uid;
         localStorage.setItem("currentUser", JSON.stringify(authUser)); // save a user in localStorage
         setUser(authUser); // authUser will always be a user in this scope
-
         // ...
         console.log(user);
         if (authUser.displayName) {
