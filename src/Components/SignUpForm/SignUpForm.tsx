@@ -41,8 +41,11 @@ export const SignUpForm = (props: SignUpFormProps) => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         // const uid = authUser.uid;
+        localStorage.setItem("currentUser", JSON.stringify(authUser)); // save a user in localStorage
         setUser(authUser); // authUser will always be a user in this scope
+
         // ...
+        console.log(user);
         if (authUser.displayName) {
           // dont update username
         } else {
