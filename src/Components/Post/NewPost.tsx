@@ -1,22 +1,23 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../Context/UserContext";
 import "./NewPost.css";
-import { storage } from "../../Utils/firebase";
+import { storage, db } from "../../Utils/firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  getMetadata,
-} from "firebase/storage";
-
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 type ImageUploadProps = {
   active: boolean;
 };
 export const ImageUpload = (props: ImageUploadProps) => {
   const [image, setImage] = useState<File | null>(null);
-  const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState("");
-
+  const { user } = useContext(UserContext);
   const handleChange = (e: any) => {
     const file = e.target.files[0];
     if (file) {
@@ -33,57 +34,40 @@ export const ImageUpload = (props: ImageUploadProps) => {
       const imageRef = ref(storage, `images/${image.name}`);
       uploadBytesResumable(imageRef, image)
         .then((snapshot) => {
-          console.log("Uploaded", snapshot.totalBytes, "bytes.");
-          console.log("File metadata:", snapshot.metadata);
+          //progress funtion ...
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progress);
+
           // Let's get a download URL for the file.
-          getDownloadURL(snapshot.ref).then((url) => {
+          getDownloadURL(snapshot.ref).then(async (url) => {
             console.log("File available at", url);
-            // ...
+            // add post inside db
+            if (user) {
+              const docRef = await addDoc(collection(db, "posts"), {
+                timestamp: serverTimestamp(),
+                caption: caption,
+                imageUrl: url,
+                username: user.displayName, // note this is passed as a prop
+                avatar: user.photoURL,
+              });
+              //add the docRef.id
+              const post = doc(db, "posts", docRef.id);
+              await updateDoc(post, { id: docRef.id });
+              console.log("Document written with ID: ", docRef.id);
+            }
           });
+          //Clean up the various states
+          setProgress(0);
+          setCaption("");
+          setImage(null);
         })
         .catch((error) => {
           console.error("Upload failed", error);
-          // ...
+          alert(error.message);
         });
     }
-
-    // const uploadTask = storage.ref(`images${image.name}`).put(image);
-    // uploadTask.on(
-    //   "state_changed",
-    //   (snapshot) => {
-    //     //progress funtion ...
-    //     const progress = Math.round(
-    //       (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-    //     );
-    //     setProgress(progress);
-    //   },
-    //   (error) => {
-    //     //Error function ...
-    //     console.log(error);
-    //     alert(error.message);
-    //   },
-    //   () => {
-    //     //completed function ...
-    //     storage
-    //       .ref("images")
-    //       .child(image.name)
-    //       .getDownloadURL()
-    //       .then((url) => {
-    //         // post image inside db
-    //         db.collection(
-    //           "posts".add({
-    //             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    //             caption: caption,
-    //             imageUrl: url,
-    //             username: username, // note this is passed as a prop
-    //           })
-    //         );
-    //         setProgress(0);
-    //         setCaption("");
-    //         setImage(null);
-    //       });
-    //   }
-    // );
   };
   return (
     <div className={props.active ? "imageupload active" : "imageupload"}>
