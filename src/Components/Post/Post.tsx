@@ -11,6 +11,12 @@ type post = {
   imageUrl: string;
   username: string;
   avatar: string;
+  comments: comment[];
+};
+type comment = {
+  text: string;
+  username: string;
+  id: string;
 };
 
 export const Post = () => {
@@ -27,6 +33,7 @@ export const Post = () => {
         id: doc.id,
       }));
       setPosts(posts);
+      console.log(posts);
     });
     return () => {
       unsub();
@@ -34,6 +41,13 @@ export const Post = () => {
   }, []);
 
   const Posts = posts.map((post: post) => {
+    const comments = post.comments.map((comment) => (
+      <h6 className="post__comment" key={comment.id}>
+        <strong>{comment.username}:</strong>
+        {comment.text}
+      </h6>
+    ));
+
     return (
       <div className="post" key={post.id}>
         <div className="post__header">
@@ -99,20 +113,7 @@ export const Post = () => {
           <strong>{post.username}:</strong>
           {post.caption}
         </h4>
-        <div className="post__comments">
-          <h5 className="post__comment">
-            <strong>username:</strong>
-            comment A
-          </h5>
-          <h5 className="post__comment">
-            <strong>username:</strong>
-            comment B
-          </h5>{" "}
-          <h5 className="post__comment">
-            <strong>username:</strong>
-            comment C
-          </h5>
-        </div>
+        <div className="post__comments">{comments}</div>
         <form className="post__add_comment">
           <input
             aria-label="Add a comment"
