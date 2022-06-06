@@ -1,0 +1,38 @@
+.post__add_comment {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-top: 1px solid;
+}
+.post__add_comment_input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  padding: 5px 5px 5px 10px;
+  font-size: 19px;
+}
+.post__add_comment_input:focus {
+  outline: none;
+}
+.post__add_comment_button {
+  background: none;
+  color: black;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  border: none;
+  font-family: StarJedi;
+  opacity: 0.6;
+  cursor: pointer;
+  width: fit-content;
+  transition: all 0.3s ease;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.post__add_comment_button:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+.post__add_comment_button:active {
+  transform: scale(0.96);
+  border: none;
+}
