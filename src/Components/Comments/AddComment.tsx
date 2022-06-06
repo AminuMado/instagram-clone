@@ -9,7 +9,6 @@ type AddCommentProps = {
 };
 
 export const AddComment = (props: AddCommentProps) => {
-  console.log(props.postId);
   const [comment, setComment] = useState("");
   const { user } = useContext(UserContext);
   const addComment = (e: React.FormEvent<HTMLFormElement>) => {
@@ -19,7 +18,7 @@ export const AddComment = (props: AddCommentProps) => {
       const docRef = doc(db, "posts", `${props.postId}`);
       updateDoc(docRef, {
         comments: arrayUnion({
-          id: user.uid,
+          userId: user.uid,
           text: comment,
           username: user.displayName,
         }),
