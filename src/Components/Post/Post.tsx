@@ -99,18 +99,31 @@ export const Post = () => {
           <strong>{post.username}:</strong>
           {post.caption}
         </h4>
-
-        <form className="post__comment">
+        <div className="post__comments">
+          <h5 className="post__comment">
+            <strong>username:</strong>
+            comment A
+          </h5>
+          <h5 className="post__comment">
+            <strong>username:</strong>
+            comment B
+          </h5>{" "}
+          <h5 className="post__comment">
+            <strong>username:</strong>
+            comment C
+          </h5>
+        </div>
+        <form className="post__add_comment">
           <input
             aria-label="Add a comment"
-            className="post__comment_input"
+            className="post__add_comment_input"
             type="text"
             name="add-comment"
             placeholder="Add a comment"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
-          <button className="post__comment_button" type="button">
+          <button className="post__add_comment_button" type="button">
             Post
           </button>
         </form>
