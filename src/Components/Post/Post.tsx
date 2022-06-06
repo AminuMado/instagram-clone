@@ -8,7 +8,7 @@ import { collection, onSnapshot } from "firebase/firestore";
 type post = {
   id: string;
   caption: string;
-  imageURL: string;
+  imageUrl: string;
   username: string;
   avatar: string;
 };
@@ -60,7 +60,7 @@ export const Post = () => {
           </div>
         </div>
         <Link to={`/Post/${post.id}`}>
-          <img className="post__image" src={post.imageURL} alt="post" />
+          <img className="post__image" src={post.imageUrl} alt="post" />
         </Link>
         <div className="post__icons">
           <svg
