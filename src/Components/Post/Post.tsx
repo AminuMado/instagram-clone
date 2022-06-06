@@ -1,9 +1,16 @@
 import "./Post.css";
 import { Avatar } from "../Avatar/Avatar";
 import { db } from "../../Utils/firebase";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { collection, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  onSnapshot,
+  doc,
+  updateDoc,
+  arrayUnion,
+} from "firebase/firestore";
+import { UserContext } from "../../Context/UserContext";
 
 type post = {
   id: string;
@@ -23,6 +30,37 @@ export const Post = () => {
   const [posts, setPosts] = useState<post[]>([]);
   const [comment, setComment] = useState("");
   const [isLiked, setIsLiked] = useState(false);
+  const { user } = useContext(UserContext);
+  const addComment = (e: React.FormEvent<HTMLFormElement>) => {
+    //we want to add a comment to the database
+    // comment must be an object containing all the fields required
+    // need to have access to the specific db we are adding to
+    e.preventDefault();
+    if (comment.trim() === "") return;
+
+    // v0bFsLnWDkj1De9iP2BE has comment
+    // r2NCqcXSmOQjZ3Zx8KDu empty array comment
+    if (user) {
+      const docRef = doc(db, "posts", "r2NCqcXSmOQjZ3Zx8KDu");
+
+      updateDoc(docRef, {
+        comments: arrayUnion({
+          id: "dummyId",
+          text: "second Comment from db",
+          timestamp: " 6 June 2022 at 00:00:00 UTC+1",
+          username: "The man himself",
+        }),
+      });
+      //  {
+      //   timestamp: serverTimestamp(),
+      //   caption: caption,
+      //   imageUrl: url,
+      //   username: user.displayName, // note this is passed as a prop
+      //   avatar: user.photoURL,
+      //  }
+    }
+  };
+
   useEffect(() => {
     //collection ref
     const colRef = collection(db, "posts");
@@ -114,7 +152,7 @@ export const Post = () => {
           {post.caption}
         </h4>
         <div className="post__comments">{comments}</div>
-        <form className="post__add_comment">
+        <form className="post__add_comment" onSubmit={addComment}>
           <input
             aria-label="Add a comment"
             className="post__add_comment_input"
@@ -124,7 +162,7 @@ export const Post = () => {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
-          <button className="post__add_comment_button" type="button">
+          <button className="post__add_comment_button" type="submit">
             Post
           </button>
         </form>
