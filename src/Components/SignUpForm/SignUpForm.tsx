@@ -53,7 +53,10 @@ export const SignUpForm = (props: SignUpFormProps) => {
         if (authUser.displayName) {
           // dont update username
         } else {
-          return updateProfile(authUser, { displayName: username });
+          return updateProfile(authUser, {
+            displayName: username,
+            photoURL: avatar,
+          });
         }
       } else {
         //user has logged out
@@ -65,7 +68,7 @@ export const SignUpForm = (props: SignUpFormProps) => {
       //perform some cleanup action, this is used to remove the listener onAuthStateChanged when this use effect runs again, as it will run again once our user or username state changes
       unsubscribe();
     };
-  }, [user, username, setUser]);
+  }, [user, username, setUser, avatar]);
   return (
     <>
       <div
