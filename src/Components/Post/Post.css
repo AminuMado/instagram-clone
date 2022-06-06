@@ -69,24 +69,29 @@
 .three_dots_icon:active {
   transform: scale(1);
 }
-
-.post__comment {
+.post__comments {
+  max-height: 90px;
+  overflow: scroll;
+  margin: 5px;
+  padding: 5px;
+}
+.post__add_comment {
   display: flex;
   align-items: center;
   gap: 4px;
   border-top: 1px solid;
 }
-.post__comment_input {
+.post__add_comment_input {
   flex: 1;
   background-color: transparent;
   border: none;
   padding: 5px 5px 5px 10px;
   font-size: 19px;
 }
-.post__comment_input:focus {
+.post__add_comment_input:focus {
   outline: none;
 }
-.post__comment_button {
+.post__add_comment_button {
   background: none;
   color: black;
   font-size: 1.1rem;
@@ -100,11 +105,11 @@
   padding-left: 3px;
   padding-right: 3px;
 }
-.post__comment_button:hover {
+.post__add_comment_button:hover {
   opacity: 1;
   transform: scale(1.1);
 }
-.post__comment_button:active {
+.post__add_comment_button:active {
   transform: scale(0.96);
   border: none;
 }
