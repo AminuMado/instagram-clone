@@ -1,0 +1,28 @@
+.post__icons {
+  display: flex;
+  padding: 6px;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+.num_of_likes {
+  font-size: 15px;
+  position: absolute;
+  bottom: -18px;
+  left: 10px;
+}
+.comment_icon,
+.like_icon {
+  height: 2rem;
+  width: 2rem;
+}
+.comment_icon:hover,
+.like_icon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.comment_icon:active,
+.like_icon:active {
+  transform: scale(1);
+}
