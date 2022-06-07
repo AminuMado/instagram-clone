@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { collection, onSnapshot } from "firebase/firestore";
 import { AddComment } from "../Comments/AddComment";
+import { PostIcons } from "./PostIcons";
 
 type post = {
   id: string;
@@ -75,7 +76,7 @@ export const Post = () => {
         <Link to={`/Post/${post.id}`}>
           <img className="post__image" src={post.imageUrl} alt="post" />
         </Link>
-
+        <PostIcons></PostIcons>
         <h4 className="post__text">
           <strong>{post.username}:</strong>
           {post.caption}
