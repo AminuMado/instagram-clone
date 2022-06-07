@@ -52,6 +52,8 @@ export const ImageUpload = (props: ImageUploadProps) => {
                 username: user.displayName, // note this is passed as a prop
                 avatar: user.photoURL,
                 comments: [],
+                likedBy: [],
+                postBy: user.uid,
               });
               //add the docRef.id
               const post = doc(db, "posts", docRef.id);
