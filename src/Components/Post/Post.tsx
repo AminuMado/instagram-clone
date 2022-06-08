@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { collection, onSnapshot } from "firebase/firestore";
 import { AddComment } from "../Comments/AddComment";
+import { Comments } from "../Comments/Comments";
 import { PostIcons } from "./PostIcons";
 import { ActivePostContext } from "../../Context/ActivePostContext";
 
@@ -42,13 +43,6 @@ export const Post = () => {
   }, []);
 
   const Posts = posts.map((post: post) => {
-    const comments = post.comments.map((comment, index) => (
-      <h6 className="post__comment" key={index}>
-        <strong>{comment.username}:</strong>
-        {comment.text}
-      </h6>
-    ));
-
     return (
       <div className="post" key={post.id}>
         <div className="post__header">
@@ -82,7 +76,9 @@ export const Post = () => {
           <strong>{post.username}:</strong>
           {post.caption}
         </h4>
-        <div className="post__comments">{comments}</div>
+        <div className="post__comments">
+          <Comments postId={post.id} />
+        </div>
         <AddComment postId={post.id} />
       </div>
     );
