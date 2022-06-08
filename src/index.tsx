@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { UserContextProvider } from "./Context/UserContext";
+import { ActivePostContextProvider } from "./Context/ActivePostContext";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <UserContextProvider>
-      <App />
+      <ActivePostContextProvider>
+        <App />
+      </ActivePostContextProvider>
     </UserContextProvider>
   </React.StrictMode>
 );
