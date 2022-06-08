@@ -76,7 +76,7 @@ export const Post = () => {
         <Link to={`/Post/${post.id}`}>
           <img className="post__image" src={post.imageUrl} alt="post" />
         </Link>
-        <PostIcons></PostIcons>
+        <PostIcons postId={post.id}></PostIcons>
         <h4 className="post__text">
           <strong>{post.username}:</strong>
           {post.caption}
