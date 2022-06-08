@@ -1,9 +1,51 @@
 import "./PostIcons.css";
-import { useState } from "react";
-
-export const PostIcons = () => {
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../Context/UserContext";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+  getDoc,
+} from "firebase/firestore";
+import { db } from "../../Utils/firebase";
+type PostIconsProps = {
+  postId: string;
+};
+export const PostIcons = (props: PostIconsProps) => {
   const [isLiked, setIsLiked] = useState(false);
+  const [numOfLikes, setNumOfLikes] = useState(0);
+  const { user } = useContext(UserContext);
+  const handleClick = async () => {
+    setIsLiked(!isLiked);
+    if (user) {
+      const docRef = doc(db, "posts", `${props.postId}`);
 
+      if (!isLiked) {
+        updateDoc(docRef, {
+          likedBy: arrayUnion(user.uid),
+        });
+      } else {
+        updateDoc(docRef, {
+          likedBy: arrayRemove(user.uid),
+        });
+      }
+    }
+  };
+  useEffect(() => {
+    const docRef = doc(db, "posts", `${props.postId}`);
+    getDoc(docRef).then((doc) => {
+      const data = doc.data()?.likedBy;
+      setNumOfLikes(data.length);
+      if (user) {
+        data.forEach((element: string) => {
+          if (element === user.uid) {
+            setIsLiked(true);
+          }
+        });
+      }
+    });
+  }, [isLiked, props.postId, user]);
   return (
     <div className="post__icons">
       <div className="likeIcon">
@@ -13,7 +55,7 @@ export const PostIcons = () => {
           viewBox="0 0 24 24"
           stroke={isLiked ? "red" : "currentcolor"}
           className="like_icon"
-          onClick={() => setIsLiked(!isLiked)}
+          onClick={handleClick}
         >
           <path
             strokeLinecap="round"
@@ -40,7 +82,10 @@ export const PostIcons = () => {
         </svg>
       </div>
 
-      <span className="num_of_likes">1 like</span>
+      <span className="num_of_likes">
+        {numOfLikes}
+        {numOfLikes > 1 ? ` likes` : ` like`}
+      </span>
     </div>
   );
 };
