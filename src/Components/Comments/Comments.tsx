@@ -21,10 +21,10 @@ export const Comments = (props: CommentsProps) => {
   }, [comments, props.postId]);
 
   const result = comments.map((comment, index) => (
-    <h6 className="post__comment" key={index}>
-      <strong>{comment.username}:</strong>
-      {comment.text}
-    </h6>
+    <div className="comment" key={index}>
+      <h6>{comment.username}:</h6>
+      <span> {comment.text}</span>
+    </div>
   ));
 
   return <>{result}</>;
