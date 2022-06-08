@@ -1,11 +1,11 @@
 import "./PostModal.css";
-import img_Src from "../../Assets/Images/wallpaper5.jpg";
 import back_Src from "../../Assets/Images/back1.png";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "../Avatar/Avatar";
-import avatar from "../../Assets/Images/Avatars/7.png";
-import { useState } from "react";
 import { PostIcons } from "./PostIcons";
+import { AddComment } from "../Comments/AddComment";
+import { Comments } from "../Comments/Comments";
+
 type post = {
   id: string;
   caption: string;
@@ -23,8 +23,6 @@ type PostModalProps = {
   post: post;
 };
 export const PostModal = (props: PostModalProps) => {
-  const [comment, setComment] = useState("");
-  const [isLiked, setIsLiked] = useState(false);
   const navigate = useNavigate();
   return (
     <div className="postModal">
@@ -32,15 +30,15 @@ export const PostModal = (props: PostModalProps) => {
         <div className="postModal__image_container">
           <img
             className="postModal__image"
-            src={props.postImageUrl}
+            src={props.post.imageUrl}
             alt="post"
           />
         </div>
         <div className="postModal__details_container">
           <div className="postModal__header">
             <div className="postModal__header_left">
-              <Avatar src={props.postAvatar} handleClick={() => {}} />
-              <h3>{props.postUsername}</h3>
+              <Avatar src={props.post.avatar} handleClick={() => {}} />
+              <h3>{props.post.username}</h3>
             </div>
             <div className="postModal__header_right">
               <svg
@@ -58,30 +56,13 @@ export const PostModal = (props: PostModalProps) => {
               </svg>
             </div>
           </div>
-          <PostIcons postId={props.postId}></PostIcons>
+          <PostIcons postId={props.post.id}></PostIcons>
           <div className="postModal__comments">
-            <h4 className="postModal__comment">
-              <strong>The Man Himself:</strong>First Post
-            </h4>
+            <Comments postId={props.post.id} />
           </div>
-
-          <form className="postModal__addComment">
-            <input
-              aria-label="Add a comment"
-              className="postModal__addComment_input"
-              type="text"
-              name="add-comment"
-              placeholder="Add a comment"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
-            <button className="postModal__addComment_button" type="button">
-              Post
-            </button>
-          </form>
+          <AddComment postId={props.post.id} />
         </div>
       </div>
-
       <img
         onClick={() => navigate(-1)}
         className="back_icon"
