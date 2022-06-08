@@ -1,11 +1,12 @@
 import "./Post.css";
 import { Avatar } from "../Avatar/Avatar";
 import { db } from "../../Utils/firebase";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { collection, onSnapshot } from "firebase/firestore";
 import { AddComment } from "../Comments/AddComment";
 import { PostIcons } from "./PostIcons";
+import { ActivePostContext } from "../../Context/ActivePostContext";
 
 type post = {
   id: string;
@@ -23,7 +24,7 @@ type comment = {
 
 export const Post = () => {
   const [posts, setPosts] = useState<post[]>([]);
-
+  const { setActivePost } = useContext(ActivePostContext);
   useEffect(() => {
     //collection ref
     const colRef = collection(db, "posts");
@@ -73,7 +74,7 @@ export const Post = () => {
             </svg>
           </div>
         </div>
-        <Link to={`/Post/${post.id}`}>
+        <Link to={`/Post/${post.id}`} onClick={() => setActivePost(post)}>
           <img className="post__image" src={post.imageUrl} alt="post" />
         </Link>
         <PostIcons postId={post.id}></PostIcons>
