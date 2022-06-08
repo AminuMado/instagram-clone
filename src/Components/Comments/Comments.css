@@ -1,0 +1,13 @@
+.comment {
+  word-wrap: anywhere;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+}
+.comment span {
+  font-size: 15px;
+}
+.comment h6 {
+  font-size: 16px;
+}
