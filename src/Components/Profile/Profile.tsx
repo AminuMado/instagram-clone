@@ -1,34 +1,40 @@
 import { Avatar } from "../Avatar/Avatar";
 import { Navbar } from "../Navbar/Navbar";
-import avatar from "../../Assets/Images/Avatars/7.png";
 import img_Src from "../../Assets/Images/wallpaper5.jpg";
-
 import "./Profile.css";
 
-export const Profile = () => {
+type ProfileProps = {
+  user: ProfileUser;
+};
+type ProfileUser = {
+  id: string;
+  username: string;
+  avatar: string;
+  posts: ProfilePost[];
+};
+type ProfilePost = {
+  id: string;
+  numOfComments: number;
+  numOflikes: number;
+  img: string;
+};
+export const Profile = (props: ProfileProps) => {
+  const postsCount = props.user.posts.length;
   return (
     <>
       <Navbar />
       <div className="profile">
         <div className="profile__userInfo_container">
-          <Avatar src={avatar} handleClick={() => {}} />
+          <Avatar src={props.user.avatar} handleClick={() => {}} />
           <div className="profile__userInfo">
             <div className="profile__userInfo_top">
-              <h2>The Man Himself</h2>
+              <h2>{props.user.username}</h2>
               <button>Edit Profile</button>
             </div>
             <div className="profile__userInfo_bottom">
               <div className="profile__userInfo_postsCount">
-                <h2>1</h2>
-                <p>posts</p>
-              </div>
-              <div className="profile__userInfo_followersCount">
-                <h2>1</h2>
-                <p>followers</p>
-              </div>
-              <div className="profile__userInfo_followingCount">
-                <h2>1</h2>
-                <p>following</p>
+                <h2>{postsCount}</h2>
+                <p>{postsCount > 1 ? "posts" : "post"}</p>
               </div>
             </div>
           </div>
@@ -56,7 +62,11 @@ export const Profile = () => {
                       d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                     ></path>
                   </svg>
-                  <span>3</span>
+                  <span>
+                    {
+                      /* this should have the likes for the specific post instance*/ 3
+                    }
+                  </span>
                 </div>
                 <div className="postCard_info_comments">
                   <svg
@@ -73,7 +83,11 @@ export const Profile = () => {
                       d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                     ></path>
                   </svg>
-                  <span>4</span>
+                  <span>
+                    {
+                      /* this should have the num of comments for the specific post instance*/ 4
+                    }
+                  </span>
                 </div>
               </div>
             </div>

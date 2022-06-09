@@ -2,16 +2,21 @@ import React, { createContext, useState } from "react";
 type UserProfileContextProviderProps = {
   children: React.ReactNode;
 };
-type user = {
+type ProfileUser = {
   id: string;
   username: string;
   avatar: string;
-  posts: [];
+  posts: ProfilePost[];
 };
-
+type ProfilePost = {
+  id: string;
+  numOfComments: number;
+  numOflikes: number;
+  img: string;
+};
 type UserProfileContextType = {
-  userProfile: user;
-  handleSetUserProfile: (user: user) => void;
+  userProfile: ProfileUser;
+  handleSetUserProfile: (user: ProfileUser) => void;
 };
 export const UserProfileContext = createContext({} as UserProfileContextType);
 
@@ -23,7 +28,7 @@ export const UserProfileContextProvider = (
   // why add this? well without a local storage state when ever you refresh the page it defaults to the empty template and throws errors as we
   // make various calls to the backend.
   const getUserProfile = (() => {
-    let currentUserProfile: user = {
+    let currentUserProfile: ProfileUser = {
       id: "",
       username: "",
       avatar: "",
@@ -36,8 +41,8 @@ export const UserProfileContextProvider = (
     return currentUserProfile;
   })();
 
-  const [userProfile, setUserProfile] = useState<user>(getUserProfile);
-  const handleSetUserProfile = (user: user) => {
+  const [userProfile, setUserProfile] = useState<ProfileUser>(getUserProfile);
+  const handleSetUserProfile = (user: ProfileUser) => {
     localStorage.setItem("currentUserProfile", JSON.stringify(user)); // save the currentUserProfile in localStorage
     setUserProfile(user);
   };
