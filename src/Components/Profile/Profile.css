@@ -34,7 +34,7 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
-.profile__userInfo_top button {
+.profile_editprofile_btn {
   display: block;
   width: 200px;
   height: 40px;
@@ -48,11 +48,8 @@
   transition: all 0.35s;
   background: none;
   font-family: StarJediSe;
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
 }
-.profile__userInfo_top button:hover {
+.profile_editprofile_btn:hover {
   color: #fff;
   cursor: pointer;
   background: black;
@@ -62,6 +59,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   flex-wrap: wrap;
 }
