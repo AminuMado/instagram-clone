@@ -9,11 +9,64 @@ import { ImageUpload } from "../Post/NewPost";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Utils/firebase";
 import { UserContext } from "../../Context/UserContext";
+import { db } from "../../Utils/firebase";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { UserProfileContext } from "../../Context/UserProfileContext";
+
+type ProfileUser = {
+  id: string;
+  username: string;
+  avatar: string;
+  posts: ProfilePost[];
+};
+type ProfilePost = {
+  id: string;
+  numOfComments: number;
+  numOflikes: number;
+  img: string;
+};
+
 export const Navbar = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [showNewPost, setShowNewPost] = useState(false);
   const { user, setUser } = useContext(UserContext);
+  const { handleSetUserProfile } = useContext(UserProfileContext);
+  const handleProfileClick = async () => {
+    // set the current profile to the default user profile
+    // to get user posts you need to get the posts array from the collection
+    // filter the ones that were posted by the user
+    // with those posts get the images and numof likes and comments
+    // create a post type with image,numoflikes & numofComments as an objec and then set user to be that
 
+    if (user && user.displayName && user.photoURL) {
+      //Getting the Posts of the User
+      const posts: ProfilePost[] = [];
+      const q = query(
+        collection(db, "posts"),
+        where("postBy", "==", user?.uid)
+      );
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const post: ProfilePost = {
+          id: data.id,
+          numOfComments: data.comments.length,
+          numOflikes: data.likedBy.length,
+          img: data.imageUrl,
+        };
+        posts.push(post);
+      });
+
+      //Setting UserProfile
+      const userProfile: ProfileUser = {
+        id: user.uid,
+        username: user.displayName,
+        avatar: user.photoURL,
+        posts: posts,
+      };
+      handleSetUserProfile(userProfile);
+    }
+  };
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -55,7 +108,7 @@ export const Navbar = () => {
       <nav
         className={showOptions ? "navbar__options active" : "navbar__options"}
       >
-        <Link to="/Profile">
+        <Link to="/Profile" onClick={handleProfileClick}>
           <span>Profile</span>
         </Link>
         <Link to="/" onClick={handleSignOut}>
