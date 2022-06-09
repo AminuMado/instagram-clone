@@ -25,7 +25,7 @@ type comment = {
 
 export const Post = () => {
   const [posts, setPosts] = useState<post[]>([]);
-  const { setActivePost } = useContext(ActivePostContext);
+  const { handleSetActivePost } = useContext(ActivePostContext);
   useEffect(() => {
     //collection ref
     const colRef = collection(db, "posts");
@@ -68,7 +68,7 @@ export const Post = () => {
             </svg>
           </div>
         </div>
-        <Link to={`/Post/${post.id}`} onClick={() => setActivePost(post)}>
+        <Link to={`/Post/${post.id}`} onClick={() => handleSetActivePost(post)}>
           <img className="post__image" src={post.imageUrl} alt="post" />
         </Link>
         <PostIcons postId={post.id}></PostIcons>
