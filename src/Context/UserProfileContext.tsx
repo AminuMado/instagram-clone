@@ -13,10 +13,9 @@ type UserProfileContextType = {
   userProfile: user;
   setUserProfile: React.Dispatch<React.SetStateAction<user>>;
 };
+export const UserProfileContext = createContext({} as UserProfileContextType);
 
-export const ActivePostContext = createContext({} as UserProfileContextType);
-
-export const ActivePostContextProvider = (
+export const UserProfileContextProvider = (
   props: UserProfileContextProviderProps
 ) => {
   const [userProfile, setUserProfile] = useState<user>({
@@ -27,8 +26,8 @@ export const ActivePostContextProvider = (
   });
 
   return (
-    <ActivePostContext.Provider value={{ userProfile, setUserProfile }}>
+    <UserProfileContext.Provider value={{ userProfile, setUserProfile }}>
       {props.children}
-    </ActivePostContext.Provider>
+    </UserProfileContext.Provider>
   );
 };
