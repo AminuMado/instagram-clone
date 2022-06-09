@@ -8,6 +8,7 @@ type post = {
   imageUrl: string;
   username: string;
   avatar: string;
+  postBy: string;
   comments: comment[];
 };
 type comment = {
@@ -35,6 +36,7 @@ export const ActivePostContextProvider = (
       caption: "",
       imageUrl: "",
       username: "",
+      postBy: "",
       avatar: "",
       comments: [],
     };
