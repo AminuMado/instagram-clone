@@ -30,22 +30,6 @@ export const Post = () => {
   const [posts, setPosts] = useState<post[]>([]);
   const { handleSetActivePost } = useContext(ActivePostContext);
   const { handleSetUserProfile } = useContext(UserProfileContext);
-
-  useEffect(() => {
-    //collection ref
-    const colRef = collection(db, "posts");
-    let posts: post[] = [];
-    const unsub = onSnapshot(colRef, (snapshot) => {
-      posts = snapshot.docs.map((doc) => ({
-        ...(doc.data() as post),
-        id: doc.id,
-      }));
-      setPosts(posts);
-    });
-    return () => {
-      unsub();
-    };
-  }, []);
   const handleAvatarIconClick = async (
     userId: string,
     userName: string,
@@ -87,22 +71,35 @@ export const Post = () => {
     };
     handleSetUserProfile(userProfile);
   };
+
+  useEffect(() => {
+    //collection ref
+    const colRef = collection(db, "posts");
+    let posts: post[] = [];
+    const unsub = onSnapshot(colRef, (snapshot) => {
+      posts = snapshot.docs.map((doc) => ({
+        ...(doc.data() as post),
+        id: doc.id,
+      }));
+      setPosts(posts);
+    });
+    return () => {
+      unsub();
+    };
+  }, []);
+
   const Posts = posts.map((post: post) => {
     return (
       <div className="post" key={post.id}>
         <div className="post__header">
           <div className="post__header_left">
-            <Link to="/Profile" onClick={() => {}}>
-              <Avatar
-                src={post.avatar}
-                handleClick={() => {
-                  handleAvatarIconClick(
-                    post.postBy,
-                    post.username,
-                    post.avatar
-                  );
-                }}
-              />
+            <Link
+              to="/Profile"
+              onClick={() => {
+                handleAvatarIconClick(post.postBy, post.username, post.avatar);
+              }}
+            >
+              <Avatar src={post.avatar} handleClick={() => {}} />
             </Link>
             <h3>{post.username}</h3>
           </div>
