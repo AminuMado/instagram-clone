@@ -4,10 +4,12 @@ import { db } from "../../Utils/firebase";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { collection, onSnapshot } from "firebase/firestore";
+import { query, where, getDocs } from "firebase/firestore";
 import { AddComment } from "../Comments/AddComment";
 import { Comments } from "../Comments/Comments";
 import { PostIcons } from "./PostIcons";
 import { ActivePostContext } from "../../Context/ActivePostContext";
+import { UserProfileContext } from "../../Context/UserProfileContext";
 
 type post = {
   id: string;
@@ -16,6 +18,7 @@ type post = {
   username: string;
   avatar: string;
   comments: comment[];
+  postBy: string;
 };
 type comment = {
   text: string;
@@ -26,6 +29,8 @@ type comment = {
 export const Post = () => {
   const [posts, setPosts] = useState<post[]>([]);
   const { handleSetActivePost } = useContext(ActivePostContext);
+  const { handleSetUserProfile } = useContext(UserProfileContext);
+
   useEffect(() => {
     //collection ref
     const colRef = collection(db, "posts");
@@ -41,14 +46,63 @@ export const Post = () => {
       unsub();
     };
   }, []);
+  const handleAvatarIconClick = async (
+    userId: string,
+    userName: string,
+    userAvatar: string
+  ) => {
+    type ProfileUser = {
+      id: string;
+      username: string;
+      avatar: string;
+      posts: ProfilePost[];
+    };
+    type ProfilePost = {
+      id: string;
+      numOfComments: number;
+      numOflikes: number;
+      img: string;
+    };
+    //Getting the Posts of the User
+    const posts: ProfilePost[] = [];
+    const q = query(collection(db, "posts"), where("postBy", "==", userId));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const post: ProfilePost = {
+        id: data.id,
+        numOfComments: data.comments.length,
+        numOflikes: data.likedBy.length,
+        img: data.imageUrl,
+      };
+      posts.push(post);
+    });
 
+    //Setting UserProfile
+    const userProfile: ProfileUser = {
+      id: userId,
+      username: userName,
+      avatar: userAvatar,
+      posts: posts,
+    };
+    handleSetUserProfile(userProfile);
+  };
   const Posts = posts.map((post: post) => {
     return (
       <div className="post" key={post.id}>
         <div className="post__header">
           <div className="post__header_left">
-            <Link to="/Profile">
-              <Avatar src={post.avatar} handleClick={() => {}} />
+            <Link to="/Profile" onClick={() => {}}>
+              <Avatar
+                src={post.avatar}
+                handleClick={() => {
+                  handleAvatarIconClick(
+                    post.postBy,
+                    post.username,
+                    post.avatar
+                  );
+                }}
+              />
             </Link>
             <h3>{post.username}</h3>
           </div>
