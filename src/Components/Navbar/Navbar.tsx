@@ -17,13 +17,22 @@ type ProfileUser = {
   id: string;
   username: string;
   avatar: string;
-  posts: ProfilePost[];
+  posts: post[];
 };
-type ProfilePost = {
+type post = {
   id: string;
-  numOfComments: number;
-  numOflikes: number;
-  img: string;
+  caption: string;
+  imageUrl: string;
+  username: string;
+  avatar: string;
+  comments: comment[];
+  postBy: string;
+  likedBy: [];
+};
+type comment = {
+  text: string;
+  username: string;
+  id: string;
 };
 
 export const Navbar = () => {
@@ -40,7 +49,7 @@ export const Navbar = () => {
 
     if (user && user.displayName && user.photoURL) {
       //Getting the Posts of the User
-      const posts: ProfilePost[] = [];
+      const posts: post[] = [];
       const q = query(
         collection(db, "posts"),
         where("postBy", "==", user?.uid)
@@ -48,12 +57,8 @@ export const Navbar = () => {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        const post: ProfilePost = {
-          id: data.id,
-          numOfComments: data.comments.length,
-          numOflikes: data.likedBy.length,
-          img: data.imageUrl,
-        };
+        const post = { ...(data as post), id: data.id };
+
         posts.push(post);
       });
 

@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { ActivePostContext } from "../../Context/ActivePostContext";
 import { Avatar } from "../Avatar/Avatar";
 import { Navbar } from "../Navbar/Navbar";
 import "./Profile.css";
@@ -5,20 +8,31 @@ import "./Profile.css";
 type ProfileProps = {
   user: ProfileUser;
 };
+type post = {
+  id: string;
+  caption: string;
+  imageUrl: string;
+  username: string;
+  avatar: string;
+  comments: comment[];
+  postBy: string;
+  likedBy: [];
+};
+type comment = {
+  text: string;
+  username: string;
+  id: string;
+};
 type ProfileUser = {
   id: string;
   username: string;
   avatar: string;
-  posts: ProfilePost[];
+  posts: post[];
 };
-type ProfilePost = {
-  id: string;
-  numOfComments: number;
-  numOflikes: number;
-  img: string;
-};
+
 export const Profile = (props: ProfileProps) => {
   const postsCount = props.user.posts.length;
+  const { handleSetActivePost } = useContext(ActivePostContext);
   const posts = props.user.posts.map((post) => {
     return (
       <div className="profile__posts_postCard" key={post.id}>
@@ -39,7 +53,7 @@ export const Profile = (props: ProfileProps) => {
                   d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                 ></path>
               </svg>
-              <span>{post.numOflikes}</span>
+              <span>{post.likedBy.length}</span>
             </div>
             <div className="postCard_info_comments">
               <svg
@@ -56,11 +70,13 @@ export const Profile = (props: ProfileProps) => {
                   d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                 ></path>
               </svg>
-              <span>{post.numOfComments}</span>
+              <span>{post.comments.length}</span>
             </div>
           </div>
         </div>
-        <img src={post.img} alt="post"></img>
+        <Link to={`/Post/${post.id}`} onClick={() => handleSetActivePost(post)}>
+          <img src={post.imageUrl} alt="post"></img>
+        </Link>
       </div>
     );
   });

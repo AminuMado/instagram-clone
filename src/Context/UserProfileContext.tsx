@@ -6,13 +6,22 @@ type ProfileUser = {
   id: string;
   username: string;
   avatar: string;
-  posts: ProfilePost[];
+  posts: post[];
 };
-type ProfilePost = {
+type post = {
   id: string;
-  numOfComments: number;
-  numOflikes: number;
-  img: string;
+  caption: string;
+  imageUrl: string;
+  username: string;
+  avatar: string;
+  comments: comment[];
+  postBy: string;
+  likedBy: [];
+};
+type comment = {
+  text: string;
+  username: string;
+  id: string;
 };
 type UserProfileContextType = {
   userProfile: ProfileUser;

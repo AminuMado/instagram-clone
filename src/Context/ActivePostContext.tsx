@@ -10,6 +10,7 @@ type post = {
   avatar: string;
   postBy: string;
   comments: comment[];
+  likedBy: [];
 };
 type comment = {
   text: string;
@@ -39,6 +40,7 @@ export const ActivePostContextProvider = (
       postBy: "",
       avatar: "",
       comments: [],
+      likedBy: [],
     };
     const value = localStorage.getItem("currentActivePost");
     if (typeof value === "string") {
