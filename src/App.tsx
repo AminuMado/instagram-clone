@@ -8,17 +8,19 @@ import { Profile } from "./Components/Profile/Profile";
 import { ThemeContextProvider } from "./Context/ThemeContext";
 import { UserContext } from "./Context/UserContext";
 import { ActivePostContext } from "./Context/ActivePostContext";
+import { UserProfileContext } from "./Context/UserProfileContext";
 
 function App() {
   const { user } = useContext(UserContext);
   const { activePost } = useContext(ActivePostContext);
+  const { userProfile } = useContext(UserProfileContext);
   return (
     <ThemeContextProvider>
       <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={user ? <Home /> : <Landing />} />
           <Route path="/Home" element={<Home />} />
-          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Profile" element={<Profile user={userProfile} />} />
           <Route path="Post/:id" element={<PostModal post={activePost} />} />
         </Routes>
       </BrowserRouter>
