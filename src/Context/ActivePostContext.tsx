@@ -27,6 +27,8 @@ export const ActivePostContextProvider = (
 ) => {
   /* Local Storage */
   // we check local storage for an existing activepost if you exist we set you to the activepost state else we set it to an empty template
+  // why add this? well without a local storage state when ever you refresh the page it defaults to the empty template and throws errors as we
+  // make various calls to the backend. And it allows a user to refresh a page without having it blank out.
   const getActivePost = (() => {
     let currentActivePost: post = {
       id: "",
