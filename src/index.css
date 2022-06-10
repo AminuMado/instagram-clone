@@ -11,6 +11,8 @@
   --heading-color: #292922;
   --heading-color1: #292922;
   --background-img: url("./Assets/Images/wallpaper3.jpg");
+  --loading-1: url("./Assets/Images/loading_1.gif");
+  --loading-2: url("./Assets/Images/loading_2.gif");
 }
 .dark {
   --primary-color: #9a97f3;
@@ -19,6 +21,8 @@
   --bg-color: #161625;
   --heading-color: #818cab;
   --background-img: url("./Assets/Images/wallpaper5.jpg");
+  --loading-1: url("./Assets/Images/loading_3.gif");
+  --loading-2: url("./Assets/Images/loading_4.gif");
 }
 
 * {
