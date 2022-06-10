@@ -25,5 +25,12 @@ export const DeletePost = (props: DeletePostProps) => {
   const handleClick = async () => {
     await deleteDoc(doc(db, "posts", props.post.id));
   };
-  return <img onClick={handleClick} src={deleteSrc} alt="delete" />;
+  return (
+    <img
+      onClick={handleClick}
+      src={deleteSrc}
+      alt="delete"
+      className="deleteIcon"
+    />
+  );
 };
