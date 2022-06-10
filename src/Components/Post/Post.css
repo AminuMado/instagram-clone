@@ -39,19 +39,6 @@
   margin-right: 5px;
 }
 
-.three_dots_icon {
-  height: 2rem;
-  width: 2rem;
-}
-
-.three_dots_icon:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-.three_dots_icon:active {
-  transform: scale(1);
-}
 .post__comments {
   max-height: 90px;
   overflow: scroll;
