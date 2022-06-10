@@ -1,0 +1,13 @@
+.deleteIcon {
+  height: 2rem;
+  width: 2rem;
+}
+
+.deleteIcon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.deleteIcon:active {
+  transform: scale(1);
+}
