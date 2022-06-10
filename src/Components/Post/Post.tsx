@@ -10,6 +10,7 @@ import { Comments } from "../Comments/Comments";
 import { PostIcons } from "./PostIcons";
 import { ActivePostContext } from "../../Context/ActivePostContext";
 import { UserProfileContext } from "../../Context/UserProfileContext";
+import { DeletePost } from "./DeletePost";
 
 type post = {
   id: string;
@@ -96,19 +97,7 @@ export const Post = () => {
             <h3>{post.username}</h3>
           </div>
           <div className="post__header_right">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="three_dots_icon"
-            >
-              <circle cx="12" cy="12" r="1"></circle>
-              <circle cx="19" cy="12" r="1"></circle>
-              <circle cx="5" cy="12" r="1"></circle>
-            </svg>
+            <DeletePost postId={post.id} />
           </div>
         </div>
         <Link to={`/Post/${post.id}`} onClick={() => handleSetActivePost(post)}>
