@@ -3,26 +3,32 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../Context/UserContext";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Utils/firebase";
+import { LoadingContext } from "../../Context/LoadingContext";
 type LoginProps = {
   active: boolean;
 };
 export const Login = (props: LoginProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { handleSetIsLoading } = useContext(LoadingContext);
 
   const { user, setUser } = useContext(UserContext);
-  const login = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        localStorage.setItem("currentUser", JSON.stringify(user)); // save a user in localStorage
-        setUser(user);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        alert(errorMessage);
-      });
+  const login = async () => {
+    try {
+      handleSetIsLoading(true);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      localStorage.setItem("currentUser", JSON.stringify(user)); // save a user in localStorage
+      setUser(user);
+      handleSetIsLoading(false);
+    } catch (err: any) {
+      alert(err.message);
+      handleSetIsLoading(false);
+    }
   };
   console.log(user);
   return (

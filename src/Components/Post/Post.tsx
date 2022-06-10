@@ -11,6 +11,7 @@ import { PostIcons } from "./PostIcons";
 import { ActivePostContext } from "../../Context/ActivePostContext";
 import { UserProfileContext } from "../../Context/UserProfileContext";
 import { DeletePost } from "./DeletePost";
+import { LoadingContext } from "../../Context/LoadingContext";
 
 type post = {
   id: string;
@@ -32,6 +33,7 @@ export const Post = () => {
   const [posts, setPosts] = useState<post[]>([]);
   const { handleSetActivePost } = useContext(ActivePostContext);
   const { handleSetUserProfile } = useContext(UserProfileContext);
+  const { handleSetIsLoading } = useContext(LoadingContext);
   const handleAvatarIconClick = async (
     userId: string,
     userName: string,
@@ -43,6 +45,8 @@ export const Post = () => {
       avatar: string;
       posts: post[];
     };
+    //set loading animation
+    handleSetIsLoading(true);
 
     //Getting the Posts of the User
     const posts: post[] = [];
@@ -63,6 +67,7 @@ export const Post = () => {
       posts: posts,
     };
     handleSetUserProfile(userProfile);
+    handleSetIsLoading(false); //disable loading animation
   };
 
   useEffect(() => {

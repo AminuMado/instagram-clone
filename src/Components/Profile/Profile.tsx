@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ActivePostContext } from "../../Context/ActivePostContext";
 import { Avatar } from "../Avatar/Avatar";
+import { Loading } from "../Loading/Loading";
 import { Navbar } from "../Navbar/Navbar";
 import "./Profile.css";
 
@@ -82,6 +83,7 @@ export const Profile = (props: ProfileProps) => {
   });
   return (
     <>
+      <Loading />
       <Navbar />
       <div className="profile">
         <div className="profile__userInfo_container">

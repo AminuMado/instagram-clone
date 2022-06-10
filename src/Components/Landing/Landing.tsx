@@ -4,6 +4,7 @@ import { SignUpForm } from "../SignUpForm/SignUpForm";
 import { Link } from "react-router-dom";
 import Overlay from "../Overlay/Overlay";
 import { useState } from "react";
+import { Loading } from "../Loading/Loading";
 
 export const Landing = () => {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -24,17 +25,20 @@ export const Landing = () => {
     setShowSignUpForm(false);
   };
   return (
-    <div className="Landing">
-      <header className="Landing-header">
-        <p onClick={handleSignInClick}>Sign in</p>
-        <p onClick={handleCreateAccountClick}>Create Account</p>
-        <Link to="/Home">
-          <p>Test Account</p>
-        </Link>
-      </header>
-      <SignUpForm active={showSignUpForm} />
-      <Login active={showLogin} />
-      <Overlay active={showOverlay} handleClick={clearAll} />
-    </div>
+    <>
+      <Loading />
+      <div className="Landing">
+        <header className="Landing-header">
+          <p onClick={handleSignInClick}>Sign in</p>
+          <p onClick={handleCreateAccountClick}>Create Account</p>
+          <Link to="/Home">
+            <p>Test Account</p>
+          </Link>
+        </header>
+        <SignUpForm active={showSignUpForm} />
+        <Login active={showLogin} />
+        <Overlay active={showOverlay} handleClick={clearAll} />
+      </div>
+    </>
   );
 };
