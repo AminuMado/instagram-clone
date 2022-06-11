@@ -1,0 +1,49 @@
+.editprofile_container {
+  position: fixed;
+  right: 0;
+  z-index: 2;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  background-color: black;
+  font-size: 3rem;
+  transition: right 0.85s ease-in-out 0s;
+  width: 400px;
+  font-family: StarJedi;
+  color: aliceblue;
+}
+
+.editprofile_container input {
+  border-radius: 4px;
+  padding: 0.3em 0.5em;
+  border: none;
+  background-color: #456;
+  font-size: 1.2rem;
+}
+
+.editprofile_container button {
+  background: none;
+  color: gray;
+  font-size: 1.9rem;
+  letter-spacing: 1px;
+  border: none;
+  font-family: StarJedi;
+  opacity: 0.6;
+  cursor: pointer;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: all 0.3s ease-in-out;
+}
+.editprofile_container button:hover {
+  transform: scale(1.2);
+  color: #00c030;
+}
+.editprofile_container button:active {
+  transform: scale(1);
+  color: silver;
+}
