@@ -1,7 +1,7 @@
 .editprofile_container {
   position: fixed;
   right: 0;
-  z-index: 2;
+  z-index: 6;
   top: 0px;
   display: flex;
   flex-direction: column;
@@ -46,4 +46,30 @@
 .editprofile_container button:active {
   transform: scale(1);
   color: silver;
+}
+.close_btn {
+  position: absolute;
+  bottom: 0;
+  right: 25px;
+  font-family: "Courier New";
+}
+.editprofile_container .close_btn:hover,
+.editprofile_container .close_btn:active {
+  color: red;
+}
+.editprofile_overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: black;
+  z-index: 5;
+  transform: translateX(-100%);
+  transition: all 0.8s ease;
+  opacity: 0.5;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+}
+.editprofile_overlay.active {
+  transform: translateX(0);
 }
