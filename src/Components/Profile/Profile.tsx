@@ -2,8 +2,11 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ActivePostContext } from "../../Context/ActivePostContext";
 import { Avatar } from "../Avatar/Avatar";
+import { AvatarPicker } from "../Avatar/AvatarPicker";
 import { Loading } from "../Loading/Loading";
 import { Navbar } from "../Navbar/Navbar";
+import Overlay from "../Overlay/Overlay";
+import { EditProfile } from "./EditProfile";
 import "./Profile.css";
 
 type ProfileProps = {
@@ -107,6 +110,7 @@ export const Profile = (props: ProfileProps) => {
         </div>
         <div className="profile__posts">{posts}</div>
       </div>
+      <EditProfile />
     </>
   );
 };
