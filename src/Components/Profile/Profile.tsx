@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ActivePostContext } from "../../Context/ActivePostContext";
 import { Avatar } from "../Avatar/Avatar";
@@ -37,6 +37,7 @@ type ProfileUser = {
 export const Profile = (props: ProfileProps) => {
   const postsCount = props.user.posts.length;
   const { handleSetActivePost } = useContext(ActivePostContext);
+  const [showEditProfile, setShowEditProfile] = useState(false);
   const posts = props.user.posts.map((post) => {
     return (
       <div className="profile__posts_postCard" key={post.id}>
@@ -100,7 +101,12 @@ export const Profile = (props: ProfileProps) => {
                 <h2>{postsCount}</h2>
                 <p>{postsCount > 1 ? "posts" : "post"}</p>
               </div>
-              <button className="profile_editprofile_btn">Edit Profile</button>
+              <button
+                onClick={() => setShowEditProfile(true)}
+                className="profile_editprofile_btn"
+              >
+                Edit Profile
+              </button>
             </div>
           </div>
         </div>
@@ -110,7 +116,7 @@ export const Profile = (props: ProfileProps) => {
         </div>
         <div className="profile__posts">{posts}</div>
       </div>
-      <EditProfile />
+      <EditProfile active={showEditProfile} toggle={setShowEditProfile} />
     </>
   );
 };
