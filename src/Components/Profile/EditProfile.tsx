@@ -11,10 +11,25 @@ export const EditProfile = (props: EditProfileProps) => {
   const [username, setUsername] = useState("");
   const [showAvatarPicker, setShowAvatarPicker] = useState(false);
   const [avatar, setAvatar] = useState("");
+  const clearAll = () => {
+    props.toggle(false);
+    setShowAvatarPicker(false);
+  };
   return (
     <div className="editprofile">
-      <div className="editprofile_overlay"></div>
-      <div className="editprofile_container">
+      <div
+        onClick={clearAll}
+        className={
+          props.active ? "editprofile_overlay active" : "editprofile_overlay"
+        }
+      ></div>
+      <div
+        className={
+          props.active
+            ? "editprofile_container active"
+            : "editprofile_container"
+        }
+      >
         <div className="editprofile_avatar_container">
           <label htmlFor="avatar">Avatar</label>
           <Avatar
@@ -24,18 +39,20 @@ export const EditProfile = (props: EditProfileProps) => {
             }}
           />
         </div>
-        <label htmlFor="username">UserName</label>
-        <input
-          onChange={(e) => setUsername(e.target.value)}
-          id="username"
-          type="text"
-          placeholder="Bobba Fett"
-          value={username}
-        ></input>
-        <div className="editprofile_buttons">
-          <button>Update</button>
+        <div className="editprofile_username_container">
+          <label htmlFor="username">userName</label>
+          <input
+            onChange={(e) => setUsername(e.target.value)}
+            id="username"
+            type="text"
+            placeholder="Bobba Fett"
+            value={username}
+          ></input>
         </div>
-        <button onClick={() => props.toggle(false)} className="close_btn">
+        <div className="editprofile_buttons">
+          <button>update</button>
+        </div>
+        <button onClick={clearAll} className="close_btn">
           Close x
         </button>
       </div>
