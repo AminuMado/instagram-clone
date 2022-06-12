@@ -2,10 +2,8 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ActivePostContext } from "../../Context/ActivePostContext";
 import { Avatar } from "../Avatar/Avatar";
-import { AvatarPicker } from "../Avatar/AvatarPicker";
 import { Loading } from "../Loading/Loading";
 import { Navbar } from "../Navbar/Navbar";
-import Overlay from "../Overlay/Overlay";
 import { EditProfile } from "./EditProfile";
 import "./Profile.css";
 
