@@ -1,7 +1,7 @@
 .avatar_picker_container_wrapper {
   position: fixed;
   right: -110%;
-  z-index: 3;
+  z-index: 6;
   top: 0px;
   display: flex;
   flex-direction: column;
