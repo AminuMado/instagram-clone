@@ -12,7 +12,6 @@ import { ActivePostContext } from "../../Context/ActivePostContext";
 import { UserProfileContext } from "../../Context/UserProfileContext";
 import { DeletePost } from "./DeletePost";
 import { LoadingContext } from "../../Context/LoadingContext";
-import { userInfo } from "os";
 import { UserContext } from "../../Context/UserContext";
 
 type post = {
