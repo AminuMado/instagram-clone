@@ -23,7 +23,7 @@ export const AvatarPicker = (props: AvatarPickerProps) => {
       const avatarRef = ref(storage, `avatars/${i}.png`);
       getDownloadURL(avatarRef)
         .then((url) => avatarsFirebase.push(url))
-        .catch((error) => console.log(error.message));
+        .catch((error) => alert(error.message));
     }
     setAvatars(avatarsFirebase);
   }, []);

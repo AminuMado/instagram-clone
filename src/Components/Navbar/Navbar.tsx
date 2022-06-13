@@ -75,15 +75,8 @@ export const Navbar = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
-        // setUser to null
-        // remove user from local storage
         localStorage.removeItem("currentUser");
         setUser(null);
-        console.log(user);
-      })
-      .then(() => {
-        console.log("logged out");
       })
       .catch((error) => {
         // An error happened.

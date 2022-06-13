@@ -12,7 +12,7 @@ export const Login = (props: LoginProps) => {
   const [password, setPassword] = useState("");
   const { handleSetIsLoading } = useContext(LoadingContext);
 
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const login = async () => {
     try {
       handleSetIsLoading(true);
@@ -30,7 +30,7 @@ export const Login = (props: LoginProps) => {
       handleSetIsLoading(false);
     }
   };
-  console.log(user);
+
   return (
     <div
       className={

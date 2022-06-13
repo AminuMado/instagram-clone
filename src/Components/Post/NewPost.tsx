@@ -58,7 +58,6 @@ export const ImageUpload = (props: ImageUploadProps) => {
               //add the docRef.id
               const post = doc(db, "posts", docRef.id);
               await updateDoc(post, { id: docRef.id });
-              console.log("Document written with ID: ", docRef.id);
             }
           });
           //Clean up the various states
@@ -67,7 +66,6 @@ export const ImageUpload = (props: ImageUploadProps) => {
           setImage(null);
         })
         .catch((error) => {
-          console.error("Upload failed", error);
           alert(error.message);
         });
     }
