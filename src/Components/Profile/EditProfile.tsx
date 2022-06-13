@@ -6,7 +6,7 @@ import { UserContext } from "../../Context/UserContext";
 import { getAuth, updateProfile } from "firebase/auth";
 import { db } from "../../Utils/firebase";
 import { collection, doc, updateDoc } from "firebase/firestore";
-import { query, where, getDocs } from "firebase/firestore";
+import { query, getDocs } from "firebase/firestore";
 import { UserProfileContext } from "../../Context/UserProfileContext";
 import { LoadingContext } from "../../Context/LoadingContext";
 
@@ -49,7 +49,6 @@ export const EditProfile = (props: EditProfileProps) => {
   };
   const updateUserProfile = async () => {
     if (!user) return; // guard clause ensures that user is defined moving forward
-    // update the name and photo
     const auth = getAuth();
     if (auth.currentUser) {
       if (username.trim() === "") return;
@@ -59,55 +58,51 @@ export const EditProfile = (props: EditProfileProps) => {
       })
         .then(async () => {
           handleSetIsLoading(true);
-          // Profile updated!
           setUser(auth.currentUser);
           localStorage.setItem("currentUser", JSON.stringify(user)); // save a user in localStorage
           //Now we have to change all the username and posts made with the old username and photo
           //first of all we grab all posts the user has made and update them with the new name and photo url
-          const q = query(
-            collection(db, "posts"),
-            where("postBy", "==", user.uid)
-          );
-          const querySnapshot = await getDocs(q);
-          querySnapshot.forEach(async (post) => {
-            const docRef = doc(db, "posts", post.id);
-            await updateDoc(docRef, {
-              username: user.displayName,
-              avatar: user.photoURL,
-            });
-          });
-          // now we update all the comments
+
           const qAllPosts = query(collection(db, "posts"));
           const qAllPostsSnapshot = await getDocs(qAllPosts);
+          const userPosts: post[] = [];
           qAllPostsSnapshot.forEach(async (post) => {
-            const postData = post.data();
-            const updatedComments: comment[] = postData.comments.map(
-              (comment: comment) => {
-                if (comment.userId === user.uid) {
-                  return { ...comment, username: user.displayName };
-                } else return comment;
-              }
-            );
             const docRef = doc(db, "posts", post.id);
-            await updateDoc(docRef, {
-              comments: updatedComments,
-            });
-          });
-          //set the currentuser to Updated user
-          if (user && user.displayName && user.photoURL) {
-            //Getting the Posts of the User
-            const userPosts: post[] = [];
-            const q = query(
-              collection(db, "posts"),
-              where("postBy", "==", user?.uid)
-            );
-            const querySnapshot = await getDocs(q);
-            querySnapshot.forEach((doc) => {
-              const data = doc.data();
-              const post = { ...(data as post), id: data.id };
+            const postData = post.data();
+            if (postData.postBy === user.uid) {
+              //This saves the posts the user made
+              const post = { ...(postData as post), id: postData.id };
               userPosts.push(post);
-            });
-            //Setting UserProfile
+              //This updates the the doc on the database
+              // get the updated comments
+              const updatedComments: comment[] = postData.comments.map(
+                (comment: comment) => {
+                  if (comment.userId === user.uid) {
+                    return { ...comment, username: user.displayName };
+                  } else return comment;
+                }
+              );
+              await updateDoc(docRef, {
+                username: user.displayName,
+                avatar: user.photoURL,
+                comments: updatedComments,
+              });
+            } else {
+              const updatedComments: comment[] = postData.comments.map(
+                (comment: comment) => {
+                  if (comment.userId === user.uid) {
+                    return { ...comment, username: user.displayName };
+                  } else return comment;
+                }
+              );
+              await updateDoc(docRef, {
+                comments: updatedComments,
+              });
+            }
+          });
+
+          //Setting UserProfile
+          if (user.displayName && user.photoURL) {
             const userProfile: ProfileUser = {
               id: user.uid,
               username: user.displayName,
