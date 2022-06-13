@@ -8,21 +8,11 @@ import { db } from "../../Utils/firebase";
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { query, where, getDocs } from "firebase/firestore";
 
-// type post = {
-//   id: string;
-//   caption: string;
-//   imageUrl: string;
-//   username: string;
-//   avatar: string;
-//   comments: comment[];
-//   postBy: string;
-//   likedBy: [];
-// };
-// type comment = {
-//   text: string;
-//   username: string;
-//   id: string;
-// };
+type comment = {
+  text: string;
+  username: string;
+  userId: string;
+};
 
 type EditProfileProps = {
   active: boolean;
@@ -74,6 +64,22 @@ export const EditProfile = (props: EditProfileProps) => {
             });
           });
           // now we update all the comments
+          const qAllPosts = query(collection(db, "posts"));
+          const qAllPostsSnapshot = await getDocs(qAllPosts);
+          qAllPostsSnapshot.forEach(async (post) => {
+            const postData = post.data();
+            const updatedComments: comment[] = postData.comments.map(
+              (comment: comment) => {
+                if (comment.userId === user.uid) {
+                  return { ...comment, username: user.displayName };
+                } else return comment;
+              }
+            );
+            const docRef = doc(db, "posts", post.id);
+            await updateDoc(docRef, {
+              comments: updatedComments,
+            });
+          });
         })
         .catch((error) => {
           // An error occurred
