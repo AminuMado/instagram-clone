@@ -32,7 +32,7 @@ type post = {
 type comment = {
   text: string;
   username: string;
-  id: string;
+  userId: string;
 };
 
 export const Navbar = () => {

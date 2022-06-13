@@ -8,7 +8,7 @@ type CommentsProps = {
 type comment = {
   text: string;
   username: string;
-  id: string;
+  userId: string;
 };
 export const Comments = (props: CommentsProps) => {
   const [comments, setComments] = useState<comment[]>([]);
