@@ -12,6 +12,8 @@ import { ActivePostContext } from "../../Context/ActivePostContext";
 import { UserProfileContext } from "../../Context/UserProfileContext";
 import { DeletePost } from "./DeletePost";
 import { LoadingContext } from "../../Context/LoadingContext";
+import { userInfo } from "os";
+import { UserContext } from "../../Context/UserContext";
 
 type post = {
   id: string;
@@ -34,6 +36,7 @@ export const Post = () => {
   const { handleSetActivePost } = useContext(ActivePostContext);
   const { handleSetUserProfile } = useContext(UserProfileContext);
   const { handleSetIsLoading } = useContext(LoadingContext);
+  const { user } = useContext(UserContext);
   const handleAvatarIconClick = async (
     userId: string,
     userName: string,
@@ -87,6 +90,7 @@ export const Post = () => {
   }, []);
 
   const Posts = posts.map((post: post) => {
+    const isUserPost = post.postBy === user?.uid ? true : false;
     return (
       <div className="post" key={post.id}>
         <div className="post__header">
@@ -101,9 +105,11 @@ export const Post = () => {
             </Link>
             <h3>{post.username}</h3>
           </div>
-          <div className="post__header_right">
-            <DeletePost postId={post.id} />
-          </div>
+          {isUserPost && (
+            <div className="post__header_right">
+              <DeletePost postId={post.id} />
+            </div>
+          )}
         </div>
         <Link to={`/Post/${post.id}`} onClick={() => handleSetActivePost(post)}>
           <img className="post__image" src={post.imageUrl} alt="post" />
