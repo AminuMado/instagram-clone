@@ -5,8 +5,7 @@ import { Avatar } from "../Avatar/Avatar";
 import { PostIcons } from "./PostIcons";
 import { AddComment } from "../Comments/AddComment";
 import { Comments } from "../Comments/Comments";
-import { db } from "../../Utils/firebase";
-import { collection } from "firebase/firestore";
+import { colRef } from "../../Utils/firebase";
 import { query, where, getDocs } from "firebase/firestore";
 import { useContext } from "react";
 import { UserProfileContext } from "../../Context/UserProfileContext";
@@ -46,7 +45,7 @@ export const PostModal = (props: PostModalProps) => {
 
     //Getting the Posts of the User
     const posts: post[] = [];
-    const q = query(collection(db, "posts"), where("postBy", "==", userId));
+    const q = query(colRef, where("postBy", "==", userId));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       const data = doc.data();

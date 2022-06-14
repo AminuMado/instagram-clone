@@ -5,8 +5,8 @@ import "./EditProfile.css";
 import { UserContext } from "../../Context/UserContext";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../../Utils/firebase";
-import { db } from "../../Utils/firebase";
-import { collection, doc, updateDoc } from "firebase/firestore";
+import { db, colRef } from "../../Utils/firebase";
+import { doc, updateDoc } from "firebase/firestore";
 import { query, getDocs } from "firebase/firestore";
 import { UserProfileContext } from "../../Context/UserProfileContext";
 import { LoadingContext } from "../../Context/LoadingContext";
@@ -63,7 +63,7 @@ export const EditProfile = (props: EditProfileProps) => {
           //Now we have to change all the username and posts made with the old username and photo
           //first of all we grab all posts the user has made and update them with the new name and photo url
 
-          const qAllPosts = query(collection(db, "posts"));
+          const qAllPosts = query(colRef);
           const qAllPostsSnapshot = await getDocs(qAllPosts);
           const userPosts: post[] = [];
           qAllPostsSnapshot.forEach(async (post) => {

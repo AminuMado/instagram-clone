@@ -1,10 +1,10 @@
 import "./Post.css";
 import { Avatar } from "../Avatar/Avatar";
-import { db } from "../../Utils/firebase";
+import { colRef } from "../../Utils/firebase";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { collection, onSnapshot } from "firebase/firestore";
-import { query, where, getDocs } from "firebase/firestore";
+import { onSnapshot } from "firebase/firestore";
+import { query, where, getDocs, orderBy } from "firebase/firestore";
 import { AddComment } from "../Comments/AddComment";
 import { Comments } from "../Comments/Comments";
 import { PostIcons } from "./PostIcons";
@@ -52,7 +52,7 @@ export const Post = () => {
 
     //Getting the Posts of the User
     const posts: post[] = [];
-    const q = query(collection(db, "posts"), where("postBy", "==", userId));
+    const q = query(colRef, where("postBy", "==", userId));
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -73,19 +73,18 @@ export const Post = () => {
   };
 
   useEffect(() => {
-    //collection ref
-    const colRef = collection(db, "posts");
     let posts: post[] = [];
-    const unsub = onSnapshot(colRef, (snapshot) => {
-      posts = snapshot.docs.map((doc) => ({
-        ...(doc.data() as post),
-        id: doc.id,
-      }));
-      setPosts(posts);
-    });
-    return () => {
-      unsub();
-    };
+    const unsubscribe = onSnapshot(
+      query(colRef, orderBy("timestamp", "desc")),
+      (snapshot) => {
+        posts = snapshot.docs.map((doc) => ({
+          ...(doc.data() as post),
+          id: doc.id,
+        }));
+        setPosts(posts);
+      }
+    );
+    return unsubscribe();
   }, []);
 
   const Posts = posts.map((post: post) => {

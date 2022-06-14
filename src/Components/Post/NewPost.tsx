@@ -1,15 +1,9 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../Context/UserContext";
 import "./NewPost.css";
-import { storage, db } from "../../Utils/firebase";
+import { storage, db, colRef } from "../../Utils/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {
-  collection,
-  addDoc,
-  serverTimestamp,
-  doc,
-  updateDoc,
-} from "firebase/firestore";
+import { addDoc, serverTimestamp, doc, updateDoc } from "firebase/firestore";
 type ImageUploadProps = {
   active: boolean;
 };
@@ -45,7 +39,7 @@ export const ImageUpload = (props: ImageUploadProps) => {
             console.log("File available at", url);
             // add post inside db
             if (user) {
-              const docRef = await addDoc(collection(db, "posts"), {
+              const docRef = await addDoc(colRef, {
                 timestamp: serverTimestamp(),
                 caption: caption,
                 imageUrl: url,

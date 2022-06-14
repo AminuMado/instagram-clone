@@ -9,8 +9,8 @@ import { ImageUpload } from "../Post/NewPost";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Utils/firebase";
 import { UserContext } from "../../Context/UserContext";
-import { db } from "../../Utils/firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { colRef } from "../../Utils/firebase";
+import { query, where, getDocs } from "firebase/firestore";
 import { UserProfileContext } from "../../Context/UserProfileContext";
 
 type ProfileUser = {
@@ -50,10 +50,7 @@ export const Navbar = () => {
     if (user && user.displayName && user.photoURL) {
       //Getting the Posts of the User
       const posts: post[] = [];
-      const q = query(
-        collection(db, "posts"),
-        where("postBy", "==", user?.uid)
-      );
+      const q = query(colRef, where("postBy", "==", user?.uid));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         const data = doc.data();
