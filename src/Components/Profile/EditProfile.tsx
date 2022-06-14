@@ -3,7 +3,8 @@ import { AvatarPicker } from "../Avatar/AvatarPicker";
 import { Avatar } from "../Avatar/Avatar";
 import "./EditProfile.css";
 import { UserContext } from "../../Context/UserContext";
-import { getAuth, updateProfile } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../Utils/firebase";
 import { db } from "../../Utils/firebase";
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { query, getDocs } from "firebase/firestore";
@@ -49,7 +50,6 @@ export const EditProfile = (props: EditProfileProps) => {
   };
   const updateUserProfile = async () => {
     if (!user) return; // guard clause ensures that user is defined moving forward
-    const auth = getAuth();
     if (auth.currentUser) {
       if (username.trim() === "") return;
       updateProfile(auth.currentUser, {
