@@ -84,7 +84,7 @@ export const Post = () => {
         setPosts(posts);
       }
     );
-    return unsubscribe();
+    return () => unsubscribe();
   }, []);
 
   const Posts = posts.map((post: post) => {
