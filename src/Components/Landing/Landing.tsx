@@ -1,7 +1,6 @@
 import "./Landing.css";
 import { Login } from "../Login/Login";
 import { SignUpForm } from "../SignUpForm/SignUpForm";
-import { Link } from "react-router-dom";
 import Overlay from "../Overlay/Overlay";
 import { useState } from "react";
 import { Loading } from "../Loading/Loading";
@@ -24,6 +23,7 @@ export const Landing = () => {
     setShowLogin(false);
     setShowSignUpForm(false);
   };
+  const handleTestAccountClick = () => {};
   return (
     <>
       <Loading />
@@ -31,9 +31,8 @@ export const Landing = () => {
         <header className="Landing-header">
           <p onClick={handleSignInClick}>Sign in</p>
           <p onClick={handleCreateAccountClick}>Create Account</p>
-          <Link to="/Home">
-            <p>Test Account</p>
-          </Link>
+
+          <p onClick={handleTestAccountClick}>Test Account</p>
         </header>
         <SignUpForm active={showSignUpForm} />
         <Login active={showLogin} />
