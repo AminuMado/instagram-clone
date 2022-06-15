@@ -90,7 +90,7 @@
     right: -250%;
   }
   .signUpForm_container.active {
-    left: 0px;
     padding: 1px;
+    width: 370px;
   }
 }
