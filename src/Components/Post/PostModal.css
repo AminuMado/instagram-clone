@@ -14,9 +14,8 @@
   background: #d7d6d4;
 }
 .postModal__details_container {
-  min-width: 550px;
-  width: 800px;
-
+  min-width: 450px;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -32,6 +31,7 @@
   width: 100%;
   object-fit: contain;
   height: 100%;
+  max-height: 830px;
 }
 
 .postModal__header {
@@ -143,4 +143,19 @@
 }
 .postModal .back_icon {
   top: 5px;
+}
+
+@media screen and (max-width: 900px) {
+  .postModal {
+    position: relative;
+    font-family: StarJedi;
+    padding: 10px;
+    background: rgba(0, 35, 92, 0.5);
+  }
+  .postModal__image_container {
+    display: none;
+  }
+  .postModal__details_container {
+    min-width: 290px;
+  }
 }
