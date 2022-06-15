@@ -13,6 +13,7 @@ import { UserContext } from "../../Context/UserContext";
 
 type SignUpFormProps = {
   active: boolean;
+  clearAll: () => void;
 };
 export const SignUpForm = (props: SignUpFormProps) => {
   const [username, setUsername] = useState<string>("");
@@ -109,6 +110,9 @@ export const SignUpForm = (props: SignUpFormProps) => {
 
           <button>Sign up</button>
         </form>
+        <button onClick={props.clearAll} className="close_button">
+          x
+        </button>
       </div>
       <AvatarPicker
         active={showAvatarPicker}

@@ -6,6 +6,7 @@ import { auth } from "../../Utils/firebase";
 import { LoadingContext } from "../../Context/LoadingContext";
 type LoginProps = {
   active: boolean;
+  clearAll: () => void;
 };
 export const Login = (props: LoginProps) => {
   const [email, setEmail] = useState("");
@@ -69,6 +70,9 @@ export const Login = (props: LoginProps) => {
           Sign in
         </button>
       </form>
+      <button onClick={props.clearAll} className="close_button">
+        x
+      </button>
     </div>
   );
 };

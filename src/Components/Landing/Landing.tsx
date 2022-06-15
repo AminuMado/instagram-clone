@@ -62,8 +62,8 @@ export const Landing = () => {
 
           <p onClick={handleTestAccountClick}>Test Account</p>
         </header>
-        <SignUpForm active={showSignUpForm} />
-        <Login active={showLogin} />
+        <SignUpForm active={showSignUpForm} clearAll={clearAll} />
+        <Login active={showLogin} clearAll={clearAll} />
         <Overlay active={showOverlay} handleClick={clearAll} />
       </div>
     </>
