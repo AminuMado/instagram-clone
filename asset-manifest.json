@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/instagram-clone/static/css/main.d5319a6a.css",
+    "main.css": "/instagram-clone/static/css/main.a40795aa.css",
     "main.js": "/instagram-clone/static/js/main.a814f991.js",
     "static/js/787.9d576594.chunk.js": "/instagram-clone/static/js/787.9d576594.chunk.js",
     "static/media/loading_4.gif": "/instagram-clone/static/media/loading_4.8036824476813c1d2bba.gif",
@@ -20,12 +20,12 @@
     "static/media/Starjedi.ttf": "/instagram-clone/static/media/Starjedi.8d577dc1e1755c4860f3.ttf",
     "static/media/trashicon.svg": "/instagram-clone/static/media/trashicon.4242291edb6700daa50d1d1032823bc7.svg",
     "index.html": "/instagram-clone/index.html",
-    "main.d5319a6a.css.map": "/instagram-clone/static/css/main.d5319a6a.css.map",
+    "main.a40795aa.css.map": "/instagram-clone/static/css/main.a40795aa.css.map",
     "main.a814f991.js.map": "/instagram-clone/static/js/main.a814f991.js.map",
     "787.9d576594.chunk.js.map": "/instagram-clone/static/js/787.9d576594.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d5319a6a.css",
+    "static/css/main.a40795aa.css",
     "static/js/main.a814f991.js"
   ]
 }
