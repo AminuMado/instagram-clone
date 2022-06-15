@@ -87,3 +87,10 @@
 .editprofile_overlay.active {
   left: 0;
 }
+
+@media screen and (max-width: 600px) {
+  .editprofile_container.active {
+    left: 0;
+    padding: 5px;
+  }
+}

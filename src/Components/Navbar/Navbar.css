@@ -12,6 +12,13 @@
   z-index: 5;
 }
 
+.navbar h1:hover {
+  transform: scale(1.02);
+  color: var(--heading-color);
+}
+.navbar h1:active {
+  transform: scale(0.99);
+}
 .navbar img {
   width: 60px;
   transition: all 0.5s ease;
@@ -61,4 +68,10 @@
 .dark_mode_switch {
   position: absolute;
   bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar h1 {
+    font-size: 20px;
+  }
 }
