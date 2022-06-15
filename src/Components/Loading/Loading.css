@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  background-color: var(--loading-color);
 }
 .loading_animation {
   background: var(--loading-animation);

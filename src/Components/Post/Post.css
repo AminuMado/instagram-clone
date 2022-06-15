@@ -30,11 +30,9 @@
 .post__text {
   font-weight: normal;
   font-size: 18px;
-  color: black;
   padding: 5px 5px 5px 10px;
 }
 .post__text strong {
-  color: black;
   font-size: 20px;
   margin-right: 5px;
 }

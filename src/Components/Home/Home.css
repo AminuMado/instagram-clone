@@ -7,7 +7,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   font-family: StarJediSE;
-  color: black;
+  color: var(--font-color);
   transition: all 0.5s ease;
   overflow: scroll;
 }

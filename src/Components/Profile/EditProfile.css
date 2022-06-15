@@ -84,7 +84,9 @@
   opacity: 0.5;
   top: 0;
 }
-
+.editprofile_overlay.active {
+  left: 0;
+}
 @media screen and (max-width: 600px) {
   .editprofile_container.active {
     padding: 0px;
