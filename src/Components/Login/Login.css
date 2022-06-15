@@ -1,6 +1,6 @@
 .loginForm_container {
   position: fixed;
-  right: -110%;
+  right: -150%;
   z-index: 2;
   top: 0px;
   display: flex;
@@ -65,4 +65,12 @@
 }
 .loginForm button:active {
   transform: scale(0.96);
+}
+@media screen and (max-width: 600px) {
+  .loginForm_container {
+    right: -250%;
+  }
+  .loginForm_container.active {
+    left: 0px;
+  }
 }

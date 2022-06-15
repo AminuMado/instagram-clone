@@ -108,3 +108,11 @@ img.back_icon:hover {
 img.back_icon:active {
   transform: scale(0.95);
 }
+@media screen and (max-width: 600px) {
+  .avatar_picker_container_wrapper {
+    right: -260%;
+  }
+  .avatar_picker_container_wrapper.active {
+    left: 0px;
+  }
+}
