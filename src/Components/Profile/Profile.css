@@ -116,6 +116,7 @@
   height: 90%;
   width: 90%;
   min-width: 240px;
+  max-height: 280px;
   object-fit: contain;
   z-index: 2;
 }
