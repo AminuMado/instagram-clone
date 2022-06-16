@@ -1,46 +1,123 @@
-# Getting Started with Create React App
+# Star Wars World
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p><a href="https://kfig21.github.io/petstagram/" target="_blank" rel="noopener noreferrer">View the project here!</a> 👀</p>
 
-## Available Scripts
+<h3>Summary</h3>
+<p>This was the final project for <a href="https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs/lessons/javascript-final-project" target="_blank" rel="noopener noreferrer">The Odin Project's</a> JavaScript curriculum. The goal of the project is to build/re-create a functional social media platform with a backend. This project is closely modeled after instagram, it was made with the React JS Library, Tailwind CSS, and Firebase.</p>
 
-In the project directory, you can run:
+ <h3>Technologies:</h3>
+  <ul>
+  <li>ReactJS</li>
+  <li>Tailwind CSS</li>
+  <li>Firebase</li>
+ </ul>
 
-### `npm start`
+ <h3>Features:</h3>
+ <ul>
+  <li>Responsive design</li>
+  <li>Create a profile</li>
+  <li>Signup/Login/Logout authentication</li>
+  <li>Upload a profile picture, with the ability to crop</li>
+  <li>Post a picture, with the ability to crop</li>
+  <li>Like/Unlike pictures</li>
+  <li>Comment on pictures</li>
+  <li>Likes and comments update in realtime</li>
+  <li>Follow/Unfollow other users</li>
+  <li>Delete pictures posted</li>
+  <li>Delete comments posted</li>
+  <li>Delete profile</li>
+ </ul>
+ 
+<h3>Demo GIF</h3>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h4>Desktop</h4>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![](demo.gif)
 
-### `npm test`
+<h4>Mobile</h4>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="demoMobile.gif" width="250"/>
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h3>Thanks for checking out my project! Any && all feedback is appreciated!</h3>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Star Wars World
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+🔗 **Live preview:** <p><a href="https://aminumado.github.io/instagram-clone" target="_blank" rel="noopener noreferrer">View the project here!</a> 👀</p>
 
-### `npm run eject`
+<h3>Summary</h3>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<p>This was the final project for <a href="https://www.theodinproject.com/lessons/node-path-javascript-javascript-final-project" target="_blank" rel="noopener noreferrer">The Odin Project's</a> JavaScript curriculum. The goal of the project is to build/re-create a functional social media platform with a backend. This project is closely modeled after instagram, it was made with the React JS Library, TypeScript and Firebase.</p>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<h3>Features:</h3>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Signup/Login/Logout authentication
+- Create a profile
+- Post a picture
+- Like/Unlike pictures
+- Comment on pictures
+- Likes and comments update in realtime
+- Delete pictures posted
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<h3>Demo GIF</h3>
 
-## Learn More
+<h4>Desktop</h4>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![](./src/Assets/DemoGif/demo.gif)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Built with
+
+### Technologies
+
+- HTML
+- CSS
+- TypeScript
+- React
+
+## Development & Tools
+
+### Javascript Framework
+
+- [React](https://github.com/facebook/create-react-app)
+
+### Libraries, extensions and tools
+
+- React Router - Router tool for React applications
+- Visual Studio Code - IDE
+- Npm - Package Manager
+- Webpack - Code bundler
+- [Firebase's Firestore](https://firebase.google.com/docs/firestore) - Scalable, flexible NoSQL database for web, mobile and server development.
+- [ESLint](https://eslint.org/) - A linter tool to standardize code
+- [Prettier](https://prettier.io/) - Code formatter
+- [Github Pages](https://pages.github.com/) - Hosting
+- [GH-Pages Deployment](https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f)
+
+## Objectives & Outcomes
+
+- Interact with a NoSQL flexible database.
+- Design an application with a clean user interface.
+- Understand and integrate a Backend-as-a-Service (BaaS) provider in Firebase into the app.
+- Familiarize with Firebase's services, i.e Cloud Firestore, Firebase Auth.
+- Further improve React proficiency in functional components using Hooks.
+- Further imporve Js knowledge using TypeScript.
+
+## Challenges
+
+- Using a database without joins and with request limits was a problem. If I were to redo the app now, I'd probably restructure each document so as to reduce calls.
+- Managing the stylesheets. I mostly separated concerns by component, but there's a lot of overlap that could have been fixed with more planning.
+
+## Future works
+
+As on any project, there are always more things that I would like to implement that didn't make it to the final version you see live. This section lists a few of them for future me to pickup and add them.
+
+- Add followers and following funtionality.
+- Add direct messaging funtionality.
+
+## Author
+
+👤 **AminuMado**
+
+- GitHub: [AminuMado](https://github.com/AminuMado)
+
+<h3>Thanks for checking out my project! Any && all feedback is appreciated!</h3>
