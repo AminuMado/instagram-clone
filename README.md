@@ -20,7 +20,8 @@
 
 <h4>Desktop</h4>
 
-![](./src/Assets/DemoGif/demo.gif)
+![](./src/Assets/Demo/demo.gif)
+![](./src/Assets/Demo/demo2.gif)
 
 ## Built with
 
@@ -76,4 +77,4 @@ As on any project, there are always more things that I would like to implement t
 
 - GitHub: [AminuMado](https://github.com/AminuMado)
 
-<h3>Thanks for checking out my project! Any && all feedback is appreciated!</h3>
+<h3>Thanks for checking out my project! Any & all feedback is appreciated!</h3>
