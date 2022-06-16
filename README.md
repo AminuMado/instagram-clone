@@ -56,7 +56,7 @@
 - Understand and integrate a Backend-as-a-Service (BaaS) provider in Firebase into the app.
 - Familiarize with Firebase's services, i.e Cloud Firestore, Firebase Auth.
 - Further improve React proficiency in functional components using Hooks.
-- Further imporve Js knowledge using TypeScript.
+- Further improve Js knowledge using TypeScript.
 
 ## Challenges
 
